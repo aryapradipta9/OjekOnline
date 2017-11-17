@@ -1,0 +1,690 @@
+/************************************/
+/* 						    		*/
+/* 		  	NGEENGstrap 			*/
+/* 			by : NGEEENG		    */
+/* 						    		*/
+/************************************/
+
+/****************/
+/*     Fonts    */
+/****************/
+@font-face {
+    font-family: "Bebas Neue";
+    src: url("../fonts/BebasNeue.otf");
+}
+
+@font-face {
+    font-family: "Rokkitt";
+    src: url("../fonts/rokkitt-regular.ttf");
+}
+
+/****************/
+/* Basic Layout */
+/****************/
+
+body {
+    background-color: #F0F0F0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+/* Boxing */
+
+div.container {
+    margin: 20px auto;
+    position: relative;
+    padding: 20px 25px;
+    width: 450px;
+    background-color: #fff;
+}
+
+div.green-box {
+    background-color: #8bbd3c;
+    color: #02702c;
+    border-radius: 40px;
+    border: #02702c solid 8px;
+}
+
+div.row {
+    padding: 10px 0;
+    display: flex;
+}
+
+/* Title */
+
+.title {
+    display: table;
+    padding: 40px 10px 30px 10px;
+    font-size: 5em;
+    text-align: center;
+    line-height: 0;
+    margin: 0 auto;
+}
+
+.title span {
+    display: table-cell;
+    padding: 0 20px;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.title:before, .title:after {
+    content: "";
+    display: table-cell;
+    width: 30%;
+    border-top: #02702c solid 3px;
+}
+
+.align-left {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-right > * {
+    position: absolute;
+    right: 40px;
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
+.align-middle {
+    text-align: center;
+}
+
+/* Other */
+
+a {
+    font-family: "Rokkitt", serif;
+    color: #000;
+}
+
+/****************/
+/*     Form     */
+/****************/
+
+form {
+    width: 100%;
+}
+
+input {
+    width: auto;
+    box-sizing: border-box;
+}
+
+.green-box input[type=text], .green-box input[type=password] {
+    border: 1px solid #02702c;
+}
+
+input[type=text], input[type=password] {
+    padding: 5px 7px;
+    font-size: 14px;
+}
+
+button[class*=button], input[class*=button] {
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-size: 14px;
+    font-family: "Rokkitt", serif;
+    cursor: pointer;
+}
+
+button[class*=-green], input[class*=-green] {
+    background-color: #84ff38;
+}
+
+button[class*=-red], input[class*=-red] {
+    background-color: #d50027;
+}
+
+button[class*=-green]:hover, input[class*=-green]:hover {
+    background-color: #003514;
+    transition-duration: 0.1s;
+}
+
+button[class*=-red]:hover, input[class*=-red]:hover {
+    background-color: #760016;
+    transition-duration: 0.1s;
+}
+
+form.form-center {
+    text-align: center
+}
+
+.input-set {
+    margin: 0 auto;
+}
+
+.input-set div {
+    padding: 5px 0px;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.label {
+    width: 40%;
+    font-size: 18px;
+}
+
+.history-label {
+    width: 60%;
+    padding-left: 10px;
+    text-align: left;
+    font-family: "Rokkitt", serif;
+    height: 60%;
+}
+
+.history-date-label {
+    font-size: 15px;
+    color: #999999;
+}
+
+.history-driver-name-label {
+    font-size: 18px;
+    color: #000000;
+}
+
+.history-other-data {
+    font-size: 13px;
+}
+
+.history-comment {
+    text-indent: 10px;
+    font-size: 13px;
+    font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+}
+
+.field {
+    width: 50%;
+    margin-left: 5px;
+}
+
+.diminished {
+    width: 45% !important;
+}
+
+.wide {
+    width: 90% !important;
+}
+
+.mark {
+    width: 10%;
+}
+
+.field > input {
+    width: 100%;
+}
+
+/* Profile Picture */
+
+img[class*=-big][class*=profilepic] {
+    width: 100px;
+    height: 100px;
+}
+
+img[class*=-small][class*=profilepic] {
+    width: 30px;
+    height: 30px;
+}
+
+img[class*=-medium][class*=profilepic] {
+    width: 50px;
+    height: 50px;
+}
+
+img[class*=-round][class*=profilepic] {
+    border-radius: 100%;
+}
+
+img[class*=profilepic-] {
+    border: 4px solid #222;
+    background-color: #FFF;
+    object-fit: cover;
+}
+
+img[class*=profilepic-][class*=driver]:not([src*=profpic]) {
+    background-image: url("../img/profile.png");
+    background-size: 100% 100%;
+}
+img[class*=profilepic-][class*=user]:not([src*=profpic]) {
+    background-image: url("../img/profilenon.png");
+    background-size: 100% 100%;
+}
+
+/************/
+/*  Common  */
+/************/
+
+/* header */
+.header {
+    display: flex;
+}
+
+.header-logo, .header-user {
+    box-sizing: border-box;
+    display: inline-block;
+    float: left;
+    width: 50%;
+}
+
+.header-user {
+    float: left;
+    text-align: right;
+    font-size: 13px;
+}
+
+.logo-text {
+    font-size: 26px;
+    font-family: "Rokkitt", serif;
+    font-weight: bold;
+    color: #02702c;
+}
+
+
+
+.logo-subtext {
+    font-size: 12px;
+    font-family: sans-serif;
+    color: #4a7308;
+}
+
+.username {
+    font-weight: bold;
+}
+
+/* nav item */
+.nav {
+    display: flex;
+}
+
+.nav > a {
+    flex: 1;
+    width: 100%;
+    text-decoration: none;
+}
+
+.nav-item {
+    flex: 1;
+    border: 1px solid #000;
+    text-align: center;
+    padding: 10px 0;
+
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-item.active {
+    color: #FFF;
+    background-color: #465d43;
+}
+
+.nav-item:hover {
+    color: #FFF;
+    background-color: #465d43;
+
+    transition-duration: 0.1s;
+}
+
+.nav-item-transaction {
+    flex: 1;
+    border: 1px solid #000;
+    text-align: center;
+    padding: 10px 0;
+
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nav-item-transaction:hover {
+    background-color: #60DD5A;
+
+    transition-duration: 0.1s;
+}
+
+.nav-item-transaction.active {
+    background-color: #60DD5A;
+}
+
+/* Login */
+.login-form {
+    margin-top: 20px;
+}
+
+.login-form .button-section {
+    width: 50%;
+    text-align: right;
+}
+
+.login-form .register-section {
+    width: 40%;
+    text-align: left;
+}
+
+.login-form .field input {
+    width: 100%;
+}
+
+.login-button-set {
+    margin-top: 60px;
+}
+
+/* section */
+.section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.section div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-header, .section-content {
+    display: flex;
+    margin-top: 10px;
+}
+
+.section-header > .section-title {
+    font-size: 38px;
+}
+
+.section-subheader {
+    display: flex;
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+.section-title {
+    font-family: "Bebas Neue", sans-serif;
+    width: 100%;
+    text-align: left;
+}
+
+.section-content {
+    width: 90%;
+}
+
+.section-content div {
+    display: inline-block;
+}
+
+.section-profilepic {
+    width: 40%;
+}
+
+.section-stacked {
+    width: 100%;
+}
+
+.section-stacked div {
+    display: block;
+}
+
+.section-edit-button {
+    text-align: left;
+    line-height: 1;
+    width: 100%;
+    transform: scaleX(-1);
+}
+
+.section-edit-button a {
+    color: #F90;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.section-location {
+    text-align: left;
+}
+
+.section-location ul li {
+    list-style: none;
+}
+
+.section-location ul li::before {
+    content: "\25B6 ";
+}
+
+.section-profile {
+    font-family: "Rokkitt", serif;
+    text-align: center;
+}
+
+.section-step {
+    display: flex;
+}
+
+.section-select-driver {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 22px;
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.section-no-results {
+    font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+    font-size: 18px;
+    text-align: center;
+    color: #999999;
+}
+
+.profile-username {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.profile-rating {
+    font-size: 14px;
+    color: #F90;
+}
+
+.profile-votes {
+    color: #000;
+}
+
+.edit-profilepic {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.edit-profilepic > .field {
+    margin: auto 0;
+}
+
+.edit input[type=text], .edit input[type=password] {
+    border: #AAA 1px solid;
+}
+
+.edit .status {
+    text-align: right;
+}
+
+/* slider checkbox */
+
+.slider-check {
+    position: relative;
+    top: 8px;
+}
+
+.slider-check > input {
+    display: none;
+}
+
+.slider::before {
+    height: 18px;
+    width: 18px;
+    display: block;
+    background-color: #DDD;
+    border-radius: 100%;
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: auto;
+    transition: left 1s;
+}
+
+#status:checked + .slider::before {
+    left: 20px;
+    transition: left 1s;
+}
+
+.slider-check .slider {
+    display: block;
+    width: 40px;
+    height: 20px;
+    background-color: #444;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    margin-top: 0;
+    transition-duration: 1s;
+}
+
+#status:checked + .slider {
+    background-color: #02702c;
+    transition-duration: 1s;
+}
+
+/* step */
+
+.step {
+    flex: 1;
+    padding: 2px 5px;
+    border: 1px solid #000;
+    margin: 0 1.5px !important;
+    display:flex;
+    align-items: center;
+}
+
+.step div {
+    font-family: "Rokkitt",serif;
+    font-size: 18px;
+}
+
+.step.active {
+    background-color: #FFC;
+}
+
+.step-no-container{
+    flex-basis:25%;
+}
+
+.step-no {
+    background-color: #CCC;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.step-guide {
+    flex-basis:75%;
+    text-align: left;
+    margin:0 0 !important;
+}
+
+/* table */
+
+.location-table, th, tr, td {
+    border: 1px solid #999;
+    border-collapse: collapse;
+    font-family: "Rokkitt", serif;
+    font-size: 18px;
+    padding-left: 5px;
+    padding-top: 4px;
+}
+
+.location-table, .section-table {
+    width: 100%;
+}
+
+tr > td:first-child {
+    text-align: center;
+}
+
+.table-row {
+    text-align: left;
+}
+
+/* Action Button */
+.section-edit-button-set div{
+    cursor:pointer;
+}
+
+.actions-save {
+    color: #8bbd3c;
+    display:none;
+}
+
+.actions-edit {
+    display:inline-block;
+    color: #F90;
+    transform:scaleX(-1);
+}
+
+.actions-delete{
+    display:inline-block;
+}
+
+.section-actions-column div {
+    text-align: center;
+}
+
+/* Driver rating */
+.driver-rate {
+    font-size: 50px;
+    margin-top: -15px;
+    color: #fcbc00;
+}
+
+.driver-rate > input:checked + label,
+.driver-rate > input:hover + label {
+    color: #fcbc00;
+}
+
+.driver-rate > input:checked + label ~ label {
+    color: #999;
+}
+
+.driver-rate > input {
+    display: none;
+}
+
+.driver-name-label {
+    font-size: 20px;
+    color: #000000;
+}
+
+.driver-eval-username {
+    font-size: 24px;
+    font-family: "Rokkitt", serif;
+    font-weight: bolder;
+    color: #000000;
+}
+
+.driver-eval-name {
+    font-size: 22px;
+    font-family: "Rokkitt", serif;
+    color: #000000;
+}
+
+.input-grading > div {
+    display: block;
+}
+
+input[id*=location-]{
+    width:100%;
+}
+
+td[id*=location-]{
+    width:60%;
+}

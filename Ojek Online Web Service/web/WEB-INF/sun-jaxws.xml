@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<endpoints xmlns='http://java.sun.com/xml/ns/jax-ws/ri/runtime' version='2.0'>
+    <endpoint name='History' implementation='user.HistoryImpl' url-pattern='/services/user/history'/>
+    <endpoint name='Profile' implementation='user.ProfileImpl' url-pattern='/services/user/profile'/>
+    <endpoint name='PreferredLocation' implementation='user.PrefLocImpl'
+              url-pattern='/services/user/preferredlocation'/>
+    <endpoint name='Order' implementation='order.OrderImpl' url-pattern='/services/order'/>
+</endpoints>
