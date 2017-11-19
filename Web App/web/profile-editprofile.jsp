@@ -1,11 +1,10 @@
-<%@ page import="java.net.URL" %>
-<%@ page import="javax.xml.namespace.QName" %>
-<%@ page import="javax.xml.ws.Service" %>
-<%@ page import="org.json.JSONObject" %>
 <%@ page import="user.Profile" %>
+<%@ page import="javax.xml.ws.Service" %>
+<%@ page import="java.net.URL" %>
+<%@ page import="org.json.JSONObject" %>
+<%@ page import="javax.xml.namespace.QName" %>
 <%@ page import="util.Env" %>
 <%@ page import="util.Header" %>
-<%@ page import="util.HttpRequest" %>
 
 <!--require_once("include/User.php");
 require_once("include/Common.php");
@@ -34,11 +33,6 @@ $userdata = getUserbyId($_GET["id"]);-->
     }
 
     if (login_cookie != null) {
-        HttpRequest req = new HttpRequest("http://localhost:"+env.getIdentityPort()+"validate");
-        boolean json_verify = new JSONObject(req.postRequest("token="+ login_cookie.getValue())).getBoolean("status");
-        if(!json_verify){
-            response.getWriter().println("window.location='login.jsp'");
-        }
         // Get Profile
         String profile_string = profile
                 .getProfile(login_cookie.getValue(), Integer.parseInt(request.getParameter("id")));
@@ -71,7 +65,7 @@ $userdata = getUserbyId($_GET["id"]);-->
               onsubmit="validateUpdateprofile('profileedit')" method="post">
             <input type="hidden" name="id" value="<%= request.getParameter("id")%>">
             <div class="edit-profilepic">
-                <div><% out.print(Header.printProfile(profile_json.getBoolean("isDriver"),profile_json.getString("profilePic"),"profilepic-big-round")); %></div>
+                <div><% //printProfile($userdata, "profilepic-big") %></div>
                 <div class="field"><input type="file" name="profpic" onchange="fileGet()"></div>
             </div>
             <div class="input-set">

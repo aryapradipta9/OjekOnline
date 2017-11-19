@@ -7,7 +7,6 @@
 <%@ page import="user.Profile" %>
 <%@ page import="util.Env" %>
 <%@ page import="util.Header" %>
-<%@ page import="util.HttpRequest" %>
 <%
     try {
         Env env = new Env();
@@ -40,8 +39,6 @@
 
         JSONObject profile_json = null;
         if (login_cookie != null) {
-            HttpRequest req = new HttpRequest("http://localhost:"+env.getIdentityPort()+"validate");
-            req.postRequest("token="+ login_cookie.getValue());
             int id = Integer.parseInt(request.getParameter("id"));
             // Get Profile
             String profile_string = profile.getProfile(login_cookie.getValue(), id);

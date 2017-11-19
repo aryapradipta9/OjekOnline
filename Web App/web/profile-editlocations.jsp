@@ -1,12 +1,12 @@
-<%@ page import="java.net.URL" %>
-<%@ page import="javax.xml.namespace.QName" %>
-<%@ page import="javax.xml.ws.Service" %>
-<%@ page import="org.json.JSONObject" %>
 <%@ page import="user.PrefLoc" %>
-<%@ page import="user.Profile" %>
+<%@ page import="javax.xml.ws.Service" %>
+<%@ page import="javax.xml.namespace.QName" %>
+<%@ page import="org.json.JSONObject" %>
+<%@ page import="java.net.URL" %>
+<%@ page import="org.json.JSONArray" %>
 <%@ page import="util.Env" %>
 <%@ page import="util.Header" %>
-<%@ page import="util.HttpRequest" %>
+<%@ page import="user.Profile" %>
 
 <!--php
 require_once("include/SQLConnection.php");
@@ -43,13 +43,8 @@ require_once("include/User.php");
         }
     }
 
+    int id = Integer.parseInt(request.getParameter("id"));
     if (login_cookie != null) {
-        HttpRequest req = new HttpRequest("http://localhost:"+env.getIdentityPort()+"validate");
-        boolean json_verify = new JSONObject(req.postRequest("token="+ login_cookie.getValue())).getBoolean("status");
-        if(!json_verify){
-            response.getWriter().println("window.location='login.jsp'");
-        }
-        int id = Integer.parseInt(request.getParameter("id"));
         // Get Preferred Location
         String location_string = prefLoc.getPrefLoc(login_cookie.getValue(), id);
         location_json = new JSONObject(location_string);

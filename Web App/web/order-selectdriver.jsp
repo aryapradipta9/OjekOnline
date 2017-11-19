@@ -7,20 +7,20 @@
 <%@ page import="user.Profile" %>
 <%@ page import="util.Env" %>
 <%@ page import="util.Header" %>
-<%@ page import="util.HttpRequest" %>
+<%@ page import="user.Profile" %>
 <%
     Env env = new Env();
 
     URL order_url = new URL("http://localhost:"+env.getOjekPort()+"/services/order?wsdl");
-    URL user_url = new URL("http://localhost:"+env.getOjekPort()+"/services/profile/profile?wsdl");
+    URL user_url = new URL("http://localhost:"+env.getOjekPort()+"/services/user/profile?wsdl");
 
     QName order_qname = new QName("http://order/", "OrderImplService");
     QName order_qname_port = new QName("http://order/", "OrderImplPort");
     Service order_service = Service.create(order_url, order_qname);
     Order order = order_service.getPort(order_qname_port, Order.class);
 
-    QName user_qname = new QName("http://profile/", "ProfileImplService");
-    QName user_qname_port = new QName("http://profile/", "ProfileImplPort");
+    QName user_qname = new QName("http://user/", "ProfileImplService");
+    QName user_qname_port = new QName("http://user/", "ProfileImplPort");
     Service user_service = Service.create(user_url, user_qname);
     Profile profile = user_service.getPort(user_qname_port, Profile.class);
 
@@ -38,13 +38,8 @@
     JSONObject order_json = null;
     JSONObject profile_json = null;
     if (login_cookie == null) {
-        response.getWriter().println("window.location='login.jsp'");
+        response.sendRedirect("login.jsp");
     }else{
-        HttpRequest req = new HttpRequest("http://localhost:"+env.getIdentityPort()+"validate");
-        boolean json_verify = new JSONObject(req.postRequest("token="+ login_cookie.getValue())).getBoolean("status");
-        if(!json_verify){
-            response.getWriter().println("window.location='login.jsp'");
-        }
         String profile_string = profile
                 .getProfile(login_cookie.getValue(), Integer.parseInt(request.getParameter("id")));
 

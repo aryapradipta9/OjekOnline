@@ -13,7 +13,6 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import user.Profile;
 import util.Env;
-import util.HttpRequest;
 
 @MultipartConfig(location = "/tmp", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024
     * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
@@ -36,8 +35,6 @@ public class UpdateProfile extends HttpServlet {
 
       Env env = new Env();
       URL url = new URL("http://localhost:" + env.getOjekPort() + "/services/user/profile?wsdl");
-      HttpRequest req = new HttpRequest("http://localhost:"+env.getIdentityPort()+"validate");
-      req.postRequest("token="+ login_cookie.getValue());
 
       QName qname = new QName("http://user/", "ProfileImplService");
       QName qname_port = new QName("http://user/", "ProfileImplPort");

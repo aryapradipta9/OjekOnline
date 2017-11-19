@@ -7,7 +7,6 @@
 <%@ page import="user.Profile" %>
 <%@ page import="util.Env" %>
 <%@ page import="util.Header" %>
-<%@ page import="util.HttpRequest" %>
 <%
     Env env = new Env();
     URL profile_url = new URL("http://localhost:"+env.getOjekPort()+"/services/user/profile?wsdl");
@@ -39,11 +38,6 @@
     JSONObject profile_json = null;
     JSONObject pref_loc_json = null;
     if (login_cookie != null) {
-        HttpRequest req = new HttpRequest("http://localhost:"+env.getIdentityPort()+"validate");
-        boolean json_verify = new JSONObject(req.postRequest("token="+ login_cookie.getValue())).getBoolean("status");
-        if(!json_verify){
-            response.getWriter().println("<script>window.location='login.jsp</script>'");;
-        }
         int id = Integer.parseInt(request.getParameter("id"));
         // Get Profile
         String pref_loc_string = pref_loc.getPrefLoc(login_cookie.getValue(), id);
@@ -59,7 +53,7 @@
         }
 
     } else {
-        response.getWriter().println("<script>window.location='login.jsp</script>'");;
+        response.sendRedirect("/login.jsp");
     }
 %>
 

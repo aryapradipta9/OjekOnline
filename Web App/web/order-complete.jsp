@@ -6,14 +6,13 @@
 <%@ page import="user.Profile" %>
 <%@ page import="util.Env" %>
 <%@ page import="util.Header" %>
-<%@ page import="util.HttpRequest" %>
+<%@ page import="user.Profile" %>
 <%
     Env env = new Env();
-    URL order_url = new URL("http://localhost:" + env.getOjekPort() + "/services/order?wsdl");
-    URL user_url = new URL("http://localhost:" + env.getOjekPort() + "/services/user/profile?wsdl");
+    URL order_url = new URL("http://localhost:"+env.getOjekPort()+"/services/order?wsdl");
+    URL user_url = new URL("http://localhost:"+env.getOjekPort()+"/services/user/profile?wsdl");
 
-    URL profile_url = new URL(
-            "http://localhost:" + env.getOjekPort() + "/services/user/profile?wsdl");
+    URL profile_url = new URL("http://localhost:"+env.getOjekPort()+"/services/user/profile?wsdl");
 
     // Create Profile Service Endpoint
     QName profile_qname = new QName("http://user/", "ProfileImplService");
@@ -47,14 +46,8 @@
     JSONObject profile_json = null;
 
     if (login_cookie == null) {
-        response.getWriter().println("window.location='login.jsp'");
+        response.sendRedirect("login.jsp");
     } else {
-        HttpRequest req = new HttpRequest("http://localhost:"+env.getIdentityPort()+"validate");
-        boolean json_verify = new JSONObject(req.postRequest("token="+ login_cookie.getValue())).getBoolean("status");
-        if(!json_verify){
-            response.getWriter().println("window.location='login.jsp'");
-        }
-
         String profile_string = user
                 .getProfile(login_cookie.getValue(), Integer.parseInt(request.getParameter("id")));
 
@@ -73,10 +66,8 @@
 </head>
 <body>
 <div class="container">
-    <% out.print(Header.printHeader(Integer.parseInt(request.getParameter("id")),
-            profile_json.getString("username"), response.getWriter()));%>
-    <% out.print(Header.printNavbar(Integer.parseInt(request.getParameter("id")), 0,
-            response.getWriter()));%>
+    <% out.print(Header.printHeader(Integer.parseInt(request.getParameter("id")),profile_json.getString("username"),response.getWriter()));%>
+    <% out.print(Header.printNavbar(Integer.parseInt(request.getParameter("id")),0,response.getWriter()));%>
 
     <div class="section">
         <div class="section-header">

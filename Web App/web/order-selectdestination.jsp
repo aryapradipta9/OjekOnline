@@ -1,11 +1,10 @@
-<%@ page import="java.net.URL" %>
-<%@ page import="javax.xml.namespace.QName" %>
-<%@ page import="javax.xml.ws.Service" %>
+<%@ page import="util.Header" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ page import="user.Profile" %>
+<%@ page import="javax.xml.ws.Service" %>
+<%@ page import="javax.xml.namespace.QName" %>
+<%@ page import="java.net.URL" %>
 <%@ page import="util.Env" %>
-<%@ page import="util.Header" %>
-<%@ page import="util.HttpRequest" %>
 <%
     Env env = new Env();
     URL profile_url = new URL("http://localhost:"+env.getOjekPort()+"/services/user/profile?wsdl");
@@ -28,11 +27,6 @@
     }
 
     if (login_cookie != null) {
-        HttpRequest req = new HttpRequest("http://localhost:"+env.getIdentityPort()+"validate");
-        boolean json_verify = new JSONObject(req.postRequest("token="+ login_cookie.getValue())).getBoolean("status");
-        if(!json_verify){
-            response.getWriter().println("window.location='login.jsp'");
-        }
         // Get Profile
         String profile_string = profile
                 .getProfile(login_cookie.getValue(), Integer.parseInt(request.getParameter("id")));
@@ -41,7 +35,7 @@
 
         profile_json = new JSONObject(profile_string);
     } else {
-        response.getWriter().println("window.location='login.jsp'");
+        response.sendRedirect("login.jsp");
     }
 %>
 
