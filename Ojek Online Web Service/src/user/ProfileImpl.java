@@ -3,15 +3,19 @@ package user;
 import db.Database;
 import org.json.JSONObject;
 
+import javax.annotation.Resource;
 import javax.jws.WebService;
+import javax.xml.ws.WebServiceContext;
 import java.util.ArrayList;
 
 @WebService(endpointInterface = "user.ProfileImpl")
 public class ProfileImpl implements Profile {
 
+    @Resource
+    private WebServiceContext context;
+
     @Override
     public String getProfile(String access_token, int id) {
-
         JSONObject json_return = new JSONObject();
 
         try {

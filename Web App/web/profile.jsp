@@ -7,6 +7,7 @@
 <%@ page import="user.Profile" %>
 <%@ page import="util.Env" %>
 <%@ page import="util.Header" %>
+<%@ page import="util.TokenChecker" %>
 <%
     Env env = new Env();
     URL profile_url = new URL("http://localhost:"+env.getOjekPort()+"/services/user/profile?wsdl");
@@ -37,7 +38,9 @@
 
     JSONObject profile_json = null;
     JSONObject pref_loc_json = null;
-    if (login_cookie != null) {
+    String ua = request.getHeader("User-Agent");
+    System.out.println(ua);
+    if ((login_cookie != null) && (TokenChecker.checkToken(ua,login_cookie.getValue()))) {
         int id = Integer.parseInt(request.getParameter("id"));
         // Get Profile
         String pref_loc_string = pref_loc.getPrefLoc(login_cookie.getValue(), id);
@@ -55,6 +58,7 @@
 
     } else {
         response.sendRedirect("/login.jsp");
+        return;
     }
 %>
 
