@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Token {
 
-    public JSONObject generateToken(String id, String username) {
+    public JSONObject generateToken(String id, String username, String browser) {
         JSONObject login_token = new JSONObject();
 
         // Generate magic string
@@ -36,6 +36,7 @@ public class Token {
             String token = hex.toString().substring(0,8);
             login_token.put("id", id);
             login_token.put("token", token);
+            login_token.put("browser", browser);
         }
         catch(Exception e) {
             e.printStackTrace();

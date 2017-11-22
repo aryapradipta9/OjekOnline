@@ -18,7 +18,7 @@
     Service profile_service = Service.create(profile_url, profile_qname);
     Profile profile = profile_service.getPort(profile_qname_port, Profile.class);
 
-    // Create Profile Service Endpoint
+    // Create Preffered Location Service Endpoint
     QName pref_loc_qname = new QName("http://user/", "PrefLocImplService");
     QName pref_loc_qname_port = new QName("http://user/", "PrefLocImplPort");
     Service pref_loc_service = Service.create(order_url, pref_loc_qname);
@@ -44,6 +44,7 @@
         String profile_string = profile.getProfile(login_cookie.getValue(), id);
         if(profile_string.equals("{}")){
             response.sendRedirect("/login.jsp");
+            return;
         }else {
             // Get Preferred Location
 
@@ -56,6 +57,7 @@
         response.sendRedirect("/login.jsp");
     }
 %>
+
 
 <!DOCTYPE HTML>
 <html>

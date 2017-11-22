@@ -17,6 +17,7 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String browser = request.getParameter("ua");
 
         try {
             Database db = new Database();
@@ -28,8 +29,9 @@ public class Login extends HttpServlet {
 
             if(result.size() == 1) {
                 String id = result.get(0).get(0);
+
                 return_json.put("status", true);
-                return_json.put("login_token", token.generateToken(id, username));
+                return_json.put("login_token", token.generateToken(id, username, browser));
 
                 // Write token and expiry to db
                 String token_value = return_json.getJSONObject("login_token").getString("token");
