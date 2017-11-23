@@ -18,6 +18,7 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String browser = request.getParameter("ua");
+        String ipAddress = request.getParameter("ip");
 
         try {
             Database db = new Database();
@@ -31,7 +32,7 @@ public class Login extends HttpServlet {
                 String id = result.get(0).get(0);
 
                 return_json.put("status", true);
-                return_json.put("login_token", token.generateToken(id, username, browser));
+                return_json.put("login_token", token.generateToken(id, username, browser, ipAddress));
 
                 // Write token and expiry to db
                 String token_value = return_json.getJSONObject("login_token").getString("token");

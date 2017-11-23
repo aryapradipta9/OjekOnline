@@ -50,6 +50,6 @@ public class Logout extends HttpServlet {
     // Write response
     PrintWriter out = response.getWriter();
     out.println(return_json.toString());
-    response.sendRedirect("http://localhost:8080/");
+    response.sendRedirect("http://localhost:8100/");
   }
 }

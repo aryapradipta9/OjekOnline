@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.util.Base64;
 import java.util.Base64.Encoder;
 import javax.servlet.ServletException;
@@ -24,8 +25,13 @@ public class Login extends HttpServlet {
       // Panggil REST Login
       HttpRequest login = new HttpRequest("http://localhost:"+env.getIdentityPort()+"/login");
       String userAgent = request.getHeader("User-Agent");
+      System.setProperty("java.net.preferIPv4Stack" , "true");
+      String ipAddress = request.getHeader("X-FORWARDED-FOR");
+      if(ipAddress == null){
+        ipAddress = request.getRemoteAddr();
+      }
       String browser = TokenChecker.parseUA(userAgent);
-      String res = login.postRequest("username="+request.getParameter("username")+"&password="+request.getParameter("password")+"&ua="+browser);
+      String res = login.postRequest("username="+request.getParameter("username")+"&password="+request.getParameter("password")+"&ua="+browser+"&ip="+ipAddress);
       JSONObject json_result = new JSONObject(res);
 
       // Hasil JSON dicek
