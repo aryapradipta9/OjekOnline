@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>VROOOM! - A Solution for Your Transportation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/token.js"></script>
+    <script>
+        //var worker = new Worker('js/firebase-messaging-sw.js');
+        initFirebase();
+        var token = generateToken();
+    </script>
+    <!-- <script src="js/firebase-messaging-sw.js"></script> -->
+</head>
+<body>
+
+<div class="chat" ng-app="chatApp" ng-controller="chatCtrl">
+    <h2 style="color:#21CB1E">Got an Order!</h2>
+    <h3>{{username}}</h3>
+    <md-content>
+        <div class="chat-display">
+            <div class={{chat.type}} ng-repeat="chat in messages">
+                <p>{{chat.content}}</p>
+            </div>
+        </div>
+        <form class="chat-content" ng-submit="send()">
+            <textarea ng-model="chatInput"></textarea>
+            <button class="chat-send" type="submit">Kirim</button>
+        </form>
+    </md-content>
+</div>
+<button class="chat-close">CLOSE</button>
+
+<script src="js/angular-chat.js"></script>
+</body>
+</html>
