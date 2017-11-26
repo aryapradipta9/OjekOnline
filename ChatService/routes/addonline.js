@@ -22,9 +22,9 @@ router.post('/', function(req, res) {
     });
 });
 
-router.get('/', function(req,res){
-    var temp = driveronline.online.pop();
-    res.send(JSON.stringify(temp));
+router.get('/:user', function(req,res){
+    driveronline.online.splice(driveronline.online.findIndex(e => e.user === req.params.user),1)
+    res.send(JSON.stringify({"driver" : req.params.user}));
 });
 
 module.exports = router;
