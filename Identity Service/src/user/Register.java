@@ -19,6 +19,7 @@ public class Register extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         String browser = request.getParameter("ua");
+        String ipAddress = request.getParameter("ip");
 
         try{
             Database db = new Database();
@@ -36,7 +37,7 @@ public class Register extends HttpServlet {
                 String id = result.get(0).get(0);
 
                 return_json.put("status", true);
-                return_json.put("login_token", token.generateToken(id, username, browser));
+                return_json.put("login_token", token.generateToken(id, username, browser, ipAddress));
 
                 String token_value = return_json.getJSONObject("login_token").getString("token");
                 long unix_time = System.currentTimeMillis() / 1000L;
