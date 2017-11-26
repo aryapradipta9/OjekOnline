@@ -74,7 +74,7 @@ app.use('/users', users);
 app.use('/addonline', addonline);
 app.use('/driver', driveronline.route);
 app.use('/chat', chatojek);
-app.use('/token', tokenList);
+app.use('/token', tokenList.route);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

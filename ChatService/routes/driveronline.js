@@ -6,6 +6,7 @@ var online = [];
 var _flagCheck;
 
 /* GET add driver status and prefloc */
+// kasi status onlen / finding order
 /* MUST USE X-WWW-FORM-URLENCODED */
 router.post('/:user', function(req, res) {
     console.log(req.body.location);
@@ -39,8 +40,10 @@ router.post('/:user', function(req, res) {
 
 });
 
-router.get('/:user', function(req, res) {
-    res.send(JSON.stringify({"tot": online.filter(function(value){ return value.user == req.params.user;}).length}));
+// ambil semua ojek yang online
+
+router.get('/', function(req, res) {
+    res.send(JSON.stringify(online));
 });
 
 router.delete('/:user', function(req, res) {

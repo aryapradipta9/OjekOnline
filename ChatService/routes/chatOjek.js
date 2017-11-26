@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 var mongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/ojek";
+var admin = require("firebase-admin");
+var token = require('./tokenList');
+var serviceAccount = require("../tubes-3-wbd-ojek-online-firebase-adminsdk-34z7r-6295bb28f0.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://tubes-3-wbd-ojek-online.firebaseio.com/"
+});
+
 
 router.post('/:user/:target', function(req, res){
     // baca request
@@ -21,8 +30,30 @@ router.post('/:user/:target', function(req, res){
         });
         db.close();
     });
+    // FIREBASE SECTION
+    var tokenList = token.tokenList;
+    var user = req.params.target;
+    var registrationToken = tokenList.find(o => o.user === user);
+    var payload = {
+        data: {
+          "message": message
+        }
+    };
 
-    // kirim data chat dalam json
+    // Send a message to the device corresponding to the provided
+    // registration token.
+    admin.messaging().sendToDevice(registrationToken, payload)
+    .then(function(response) {
+    // See the MessagingDevicesResponse reference documentation for
+    // the contents of response.
+    console.log("Successfully sent message:", response);
+    })
+    .catch(function(error) {
+    console.log("Error sending message:", error);
+    });
+    
+    // kirim data chat dalam json ke firebase
+
 });
 
 router.get('/:user/:target', function(req, res){
