@@ -47,6 +47,7 @@
         profile_json = new JSONObject(profile_string);
 
     }
+
 %>
 <!DOCTYPE HTML>
 <html>
@@ -114,8 +115,10 @@
 
                     JSONObject preferred = order_json.getJSONObject("preferred");
                     if (!preferred.toString().equals("{}")) {
+                        Cookie cook = new Cookie("usrnmdrv", order_json.getJSONObject("preferred").getString("username"));
+                        response.addCookie(cook);
             %>
-            <form action="order-complete.jsp?id=<%=request.getParameter("userId")%>" method="post">
+            <form action="order-chatuser.jsp?id=<%=request.getParameter("userId")%>" method="post">
                 <div class="section-content">
                     <input type="hidden" name="origin" value="<%=request.getParameter("origin")%>">
                     <input type="hidden" name="destination"
@@ -167,6 +170,8 @@
                 JSONArray jsonArray = order_json.getJSONArray("other");
                 if (jsonArray.length() > 0) {
                     for (int i = 0; i < jsonArray.length(); i++) {
+                        Cookie cook = new Cookie("usrnmdrv", jsonArray.getJSONObject(i).getString("username"));
+                        response.addCookie(cook);
             %>
 
             <%--<form action="order-chatuser.jsp?id=<%=request.getParameter("userId")%>" method="post">--%>
