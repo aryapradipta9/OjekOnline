@@ -23,7 +23,7 @@ import util.TokenChecker;
 @WebServlet(name = "SelectDriver")
 public class SelectDriver extends HttpServlet {
 
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     /*try {
       // ambil nama driver yg diselect
       Env env = new Env();
@@ -46,13 +46,6 @@ public class SelectDriver extends HttpServlet {
     }
   */
     try {
-      Env env = new Env();
-      URL order_url = new URL("http://localhost:"+env.getOjekPort()+"/services/user/preferredlocation?wsdl");
-      QName pref_loc_qname = new QName("http://user/", "PrefLocImplService");
-      QName pref_loc_qname_port = new QName("http://user/", "PrefLocImplPort");
-      Service pref_loc_service = Service.create(order_url, pref_loc_qname);
-      PrefLoc pref_loc = pref_loc_service.getPort(pref_loc_qname_port, PrefLoc.class);
-
       Cookie[] cookies = request.getCookies();
       Cookie login_cookie = null;
 
@@ -67,10 +60,9 @@ public class SelectDriver extends HttpServlet {
       String ua = request.getHeader("User-Agent");
       if ((login_cookie != null) && (TokenChecker.checkToken(ua,login_cookie.getValue()))) {
         int id = Integer.parseInt(request.getParameter("id"));
-        String pref_loc_string = pref_loc.getPrefLoc(login_cookie.getValue(), id);
-        Cookie cook = new Cookie("location", pref_loc_string);
+        Cookie cook = new Cookie("usrnmdrv", request.getParameter("driverUsername"));
         response.addCookie(cook);
-        RequestDispatcher rd = request.getRequestDispatcher("order-driverview.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("order-complete.jsp?id=" + id);
         rd.forward(request, response);
       }
     } catch (Exception e) {
