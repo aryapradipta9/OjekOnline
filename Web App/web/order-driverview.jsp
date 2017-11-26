@@ -44,6 +44,7 @@
         // Get Profile
         String pref_loc_string = pref_loc.getPrefLoc(login_cookie.getValue(), id);
         String profile_string = profile.getProfile(login_cookie.getValue(), id);
+
         if(profile_string.equals("{}")){
             // tidak terdapat profil orang dengan id sekian
             response.sendRedirect("/login.jsp");

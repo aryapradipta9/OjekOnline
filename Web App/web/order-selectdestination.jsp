@@ -36,7 +36,7 @@
 
         profile_json = new JSONObject(profile_string);
         if (profile_json.getBoolean("isDriver")) {
-            response.sendRedirect("/order-driverview.jsp?id=" + id);
+            response.sendRedirect("/selectdriver?id=" + id);
             return;
         }
     } else {

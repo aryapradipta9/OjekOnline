@@ -20,7 +20,7 @@ router.get('/:user', function(req, res){
     var token = tokenList.find(o => o.user === user);
     //var inp = {"token" : token};
     res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(token));
+    res.send(JSON.stringify(tokenList));
 });
 
 module.exports.route = router;

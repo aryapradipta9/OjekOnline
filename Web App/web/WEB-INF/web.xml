@@ -68,4 +68,14 @@
         <servlet-name>SaveOrder</servlet-name>
         <url-pattern>/saveorder</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SelectDriver</servlet-name>
+        <servlet-class>SelectDriver</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectDriver</servlet-name>
+        <url-pattern>/selectdriver</url-pattern>
+    </servlet-mapping>
+
 </web-app>
