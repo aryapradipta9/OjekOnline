@@ -28,12 +28,17 @@
 
     if (login_cookie != null) {
         // Get Profile
+        int id = Integer.parseInt(request.getParameter("id"));
         String profile_string = profile
-                .getProfile(login_cookie.getValue(), Integer.parseInt(request.getParameter("id")));
+                .getProfile(login_cookie.getValue(), id);
 
         // Get Preferred Location
 
         profile_json = new JSONObject(profile_string);
+        if (profile_json.getBoolean("isDriver")) {
+            response.sendRedirect("/order-driverview.jsp?id=" + id);
+            return;
+        }
     } else {
         response.sendRedirect("login.jsp");
     }

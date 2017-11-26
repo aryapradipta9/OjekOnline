@@ -57,8 +57,9 @@ public class Register extends HttpServlet {
 
                 profile.addProfile(id , name, email, phone, username, password, isDriver);
             } else {
-                response.getWriter().print("<script>alert('Registrasi Gagal, Username/Email sudah terdaftar')");
-                response.getWriter().print("document.location = 'register.jsp'</script>");
+
+                response.getWriter().print("<script>alert('Registrasi Gagal, Username/Email sudah terdaftar');");
+                response.getWriter().print("document.location = 'signup.jsp'</script>");
             }
 
         } catch (Exception e) {

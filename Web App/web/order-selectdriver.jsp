@@ -52,6 +52,18 @@
 <head>
     <title>VROOOM! - A Solution for Your Transportation</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url:"http://localhost:8080/online.html",
+            type:"GET",
+
+            crossDomain:true,
+            success:function(response) {
+                console.log(response);
+            }
+        });
+    </script>
 </head>
 <body>
 <div class="container">

@@ -33,7 +33,9 @@ public class Login extends HttpServlet {
         Encoder tokenEncoder = Base64.getEncoder();
         String token = new String(tokenEncoder.encode(json_result.getJSONObject("login_token").toString().getBytes()));
         Cookie login_token = new Cookie("login_token", token);
+        Cookie cook = new Cookie("username", request.getParameter("username"));
         response.addCookie(login_token);
+        response.addCookie(cook);
         response.sendRedirect("profile.jsp?id="+json_result.getJSONObject("login_token").getInt("id"));
       }
       else{
