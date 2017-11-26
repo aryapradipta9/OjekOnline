@@ -65,7 +65,11 @@
                 <div class="step-guide">Select A Driver</div>
             </div>
             <div class="step">
-                <div class="step-no-container"><div class="step-no">3</div></div>
+                <div class="step-no">3</div>
+                <div class="step-guide active">Chat Driver</div>
+            </div>
+            <div class="step">
+                <div class="step-no-container"><div class="step-no">4</div></div>
                 <div class="step-guide">Complete your order</div>
             </div>
         </div>

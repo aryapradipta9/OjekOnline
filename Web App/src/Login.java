@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.util.Base64;
 import java.util.Base64.Encoder;
 import javax.servlet.ServletException;
@@ -25,13 +24,8 @@ public class Login extends HttpServlet {
       // Panggil REST Login
       HttpRequest login = new HttpRequest("http://localhost:"+env.getIdentityPort()+"/login");
       String userAgent = request.getHeader("User-Agent");
-      System.setProperty("java.net.preferIPv4Stack" , "true");
-      String ipAddress = request.getHeader("X-FORWARDED-FOR");
-      if(ipAddress == null){
-        ipAddress = request.getRemoteAddr();
-      }
       String browser = TokenChecker.parseUA(userAgent);
-      String res = login.postRequest("username="+request.getParameter("username")+"&password="+request.getParameter("password")+"&ua="+browser+"&ip="+ipAddress);
+      String res = login.postRequest("username="+request.getParameter("username")+"&password="+request.getParameter("password")+"&ua="+browser);
       JSONObject json_result = new JSONObject(res);
 
       // Hasil JSON dicek
@@ -39,7 +33,9 @@ public class Login extends HttpServlet {
         Encoder tokenEncoder = Base64.getEncoder();
         String token = new String(tokenEncoder.encode(json_result.getJSONObject("login_token").toString().getBytes()));
         Cookie login_token = new Cookie("login_token", token);
+        Cookie cook = new Cookie("username", request.getParameter("username"));
         response.addCookie(login_token);
+        response.addCookie(cook);
         response.sendRedirect("profile.jsp?id="+json_result.getJSONObject("login_token").getInt("id"));
       }
       else{

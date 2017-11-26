@@ -76,6 +76,10 @@
             </div>
             <div class="step">
                 <div class="step-no">3</div>
+                <div class="step-guide active">Chat Driver</div>
+            </div>
+            <div class="step">
+                <div class="step-no">4</div>
                 <div class="step-guide">Complete your order</div>
             </div>
         </div>
@@ -146,7 +150,7 @@
                     for (int i = 0; i < jsonArray.length(); i++) {
             %>
 
-            <form action="order-complete.jsp?id=<%=request.getParameter("userId")%>" method="post">
+            <form action="order-chatuser.jsp?id=<%=request.getParameter("userId")%>" method="post">
                 <!-- NAMPILIN USER YANG BISA*/ -->
                 <div class="section-content">
                     <input type="hidden" name="origin" value="<%=request.getParameter("origin")%>">
