@@ -7,6 +7,7 @@
 <%@ page import="user.Profile" %>
 <%@ page import="util.Env" %>
 <%@ page import="util.Header" %>
+<%@ page import="util.HttpRequest" %>
 <%@ page import="user.Profile" %>
 <%
     Env env = new Env();
@@ -105,6 +106,12 @@
                                     request.getParameter("preferreddriver"),
                                     Integer.parseInt(request.getParameter("id")));
                     order_json = new JSONObject(order_string);
+                    // bersih bersih json
+                    HttpRequest xhr = new HttpRequest("http://localhost:8080/online.html");
+
+                    JSONObject onlineDriver = new JSONObject(xhr.getRequest(""));
+                    JSONArray online = onlineDriver.getJSONArray("online");
+
                     JSONObject preferred = order_json.getJSONObject("preferred");
                     if (!preferred.toString().equals("{}")) {
             %>
@@ -162,15 +169,11 @@
                     for (int i = 0; i < jsonArray.length(); i++) {
             %>
 
-            <form action="order-chatuser.jsp?id=<%=request.getParameter("userId")%>" method="post">
+            <%--<form action="order-chatuser.jsp?id=<%=request.getParameter("userId")%>" method="post">--%>
+            <form action="localhost:3000/addonline/<%=jsonArray.getJSONObject(i).get("id")%>" method="get">
                 <!-- NAMPILIN USER YANG BISA*/ -->
                 <div class="section-content">
-                    <input type="hidden" name="origin" value="<%=request.getParameter("origin")%>">
-                    <input type="hidden" name="destination"
-                           value="<%=request.getParameter("destination")%>">
-                    <input type="hidden" name="userId" value="<%=request.getParameter("userId")%>">
-                    <input type="hidden" name="driverId"
-                           value="<%=jsonArray.getJSONObject(i).get("id")%>">
+
                     <div class="section-profilepic">
                         <%// Get Profile
                         //String profile_string = profile.getProfile(login_cookie.getValue(), jsonArray.getJSONObject(i).getInt("id"));
