@@ -34,7 +34,9 @@ function generateToken() {
   firebase.messaging().requestPermission()
   .then(function() {
     console.log('Notification permission granted.');
-    return firebase.messaging().getToken();})
+    var temp = firebase.messaging().getToken();
+    console.log(temp);
+    return temp})
   .then(function(token) {
     console.log(token);
     usrnm = getCookie("username");
@@ -66,7 +68,8 @@ function generateToken() {
   })
   .catch(function(err) {
     console.log('An error occurred while retrieving token. ', err);
-    //showToken('Error retrieving Instance ID token. ', err);
+    showToken('Error retrieving Instance ID token. ', err);
+    setTokenSentToServer(false);
   });
    
   // })

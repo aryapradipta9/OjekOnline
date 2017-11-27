@@ -5,6 +5,7 @@ var logger = require('morgan');
 var mongo = require('mongodb');
 var async = require('async');
 var mongoClient = require('mongodb').MongoClient;
+var cookieParser = require('cookie-parser');
 
 var url = "mongodb://localhost:27017/chat";
 mongoClient.connect(url, function(err,db) {
@@ -57,8 +58,10 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   next();
 });
 app.use(logger('dev'));
@@ -68,6 +71,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 app.use('/', index);
 app.use('/users', users);
