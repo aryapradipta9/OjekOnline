@@ -42,7 +42,11 @@
     JSONObject pref_loc_json = null;
     String ua = request.getHeader("User-Agent");
     System.out.println(ua);
-    if ((login_cookie != null) && (TokenChecker.checkToken(ua,login_cookie.getValue()))) {
+    String ipAddress = request.getHeader("X-FORWARDED-FOR");
+    if(ipAddress == null){
+        ipAddress = request.getRemoteAddr();
+    }
+    if ((login_cookie != null) && (TokenChecker.checkToken(ua,login_cookie.getValue(),ipAddress))) {
         int id = Integer.parseInt(request.getParameter("id"));
         // Get Profile
         String pref_loc_string = pref_loc.getPrefLoc(login_cookie.getValue(), id);
