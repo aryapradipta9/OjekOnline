@@ -33,7 +33,7 @@ router.post('/:user/:target', function(req, res){
     // FIREBASE SECTION
     var tokenList = token.tokenList;
     var user = req.params.target;
-    var registrationToken = tokenList.find(o => o.user === user);
+    var registrationToken = tokenList.find(o => o.username === user).token;
     var payload = {
         data: {
           "message": message
