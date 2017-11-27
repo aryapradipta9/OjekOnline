@@ -27,10 +27,22 @@ firebase.messaging().onMessage(function(payload) {
 });
 
 
-var chat = angular.module('chatApp', []);
-//var cookie = angular.module('chatApp', ['ngCookies']);
-
-chat.controller('chatCtrl', ['$scope', function($scope) {
+angular.module('chatApp', [])
+.directive('scrollBottom', function() {
+  return {
+    scope: {
+      scrollBottom: "="
+    },
+    link: function(scope, element) {
+      scope.$watchCollection('scrollBottom', function (newValue) {
+        if (newValue) {
+          $(element).scrollTop($(element)[0].scrollHeight);
+        }
+      });
+    }
+  }
+})
+.controller('chatCtrl', function($scope) {
     $scope.messages = [];
     $scope.username = getCookie("user");
     var usrnm = getCookie("username");
@@ -52,7 +64,7 @@ chat.controller('chatCtrl', ['$scope', function($scope) {
     	}
     	$scope.messages.push({id:$scope.messages.length, content:msg, type:typ});
     }
-}]);
+});
 
 function updateChat(msg, me) {
 	var scope = angular.element($(".chat-display")).scope();
