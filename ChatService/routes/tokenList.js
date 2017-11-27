@@ -6,9 +6,9 @@ var router = express.Router();
 
 var tokenList = [];
 
-router.post('/:user', function(req, res){
+router.post('/:user/:token', function(req, res){
     var user = req.params.user;
-    var token = req.body.token;
+    var token = req.params.token;
     var inp = {"username" : user, "token" : token};
     tokenList.push(inp);
     res.setHeader('Content-Type', 'application/json');
