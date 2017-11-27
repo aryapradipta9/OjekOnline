@@ -23,12 +23,16 @@ router.post('/:user/:target', function(req, res){
     //var inpData = JSON.parse();
     mongoClient.connect(url, function(err,db) {
       if (err) throw err;
+
+      if (inpData.message != 'chat-finished') { 
         db.collection("chat").insertOne(inpData,function(err,resu){
             if (err) throw err;
             console.log(inpData);
             //res.send(JSON.stringify({"status" : "ok"}));
         });
         db.close();
+      } else {
+      }
     });
     // FIREBASE SECTION
     var tokenList = token.tokenList;
