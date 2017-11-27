@@ -56,6 +56,12 @@ router.get('/', function(req, res) {
     res.send(JSON.stringify({"online" : online}));
 });
 
+router.get('/:driver', function(req,res){
+    driveronline.online.splice(driveronline.online.findIndex(e => e === req.params.driver),1);
+    
+    res.send(JSON.stringify({"driver" : req.params.driver}));
+});
+
 router.delete('/:user', function(req, res) {
     clearInterval(_flagCheck);
     res.send("true");

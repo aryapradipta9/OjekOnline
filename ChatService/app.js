@@ -26,6 +26,7 @@ var driveronline = require('./routes/driveronline');
 var chatojek = require('./routes/chatOjek');
 var tokenList = require('./routes/tokenList');
 var cors = require('cors');
+var complete = require('./routes/complete');
 
 var app = express();
 
@@ -77,8 +78,9 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/driver', addonline.route);
 app.use('/addonline', driveronline.route);
-app.use('/chat', chatojek);
+app.use('/chat', chatojek.route);
 app.use('/token', tokenList.route);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

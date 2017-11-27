@@ -60,6 +60,30 @@ router.post('/:user/:target', function(req, res){
 
 });
 
+router.get('/c/:user/:target', function(req, res){
+    var tokenList = token.tokenList;
+    var user = req.params.target;
+    var registrationToken = tokenList.find(o => o.username === user).token;
+    var payload = {
+        data: {
+          "message": "chat-finished"
+        }
+    };
+
+    // Send a message to the device corresponding to the provided
+    // registration token.
+    admin.messaging().sendToDevice(registrationToken, payload)
+    .then(function(response) {
+    // See the MessagingDevicesResponse reference documentation for
+    // the contents of response.
+    console.log("Successfully sent message:", response);
+    })
+    .catch(function(error) {
+    console.log("Error sending message:", error);
+    });
+    res.send("ok");
+});
+
 router.get('/:user/:target', function(req, res){
     var sender = req.params.user;
     var receiver = req.params.target;
@@ -90,4 +114,5 @@ router.get('/:user/:target', function(req, res){
         });
     });
 });
-module.exports = router;
+module.exports.route = router;
+module.exports.admin = admin;

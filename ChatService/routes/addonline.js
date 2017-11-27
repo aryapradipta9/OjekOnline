@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
 });
 
 router.get('/:user/:driver', function(req,res){
-    driveronline.online.splice(driveronline.online.findIndex(e => e.user === req.params.driver),1);
+    driveronline.online.splice(driveronline.online.findIndex(e => e === req.params.driver),1);
     mapping.push({"cust" : req.params.user, "driver" : req.params.driver});
     res.send(JSON.stringify({"driver" : req.params.driver}));
 });

@@ -41,7 +41,6 @@
     JSONObject profile_json = null;
     JSONObject pref_loc_json = null;
     String ua = request.getHeader("User-Agent");
-    System.out.println(ua);
     String ipAddress = request.getHeader("X-FORWARDED-FOR");
     if(ipAddress == null){
         ipAddress = request.getRemoteAddr();

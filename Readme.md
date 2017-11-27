@@ -116,19 +116,19 @@ Token tidak perlu dienkripsi-dienkripsi (for simplicity)
 ### Tampilan Program
 Halaman Order pada Driver
 
-![](img/<<ISI>>)
+![](img/orderdriver2.PNG)
 
 Halaman Order pada Driver Ketika Melakukan Finding Order
 
-![](img/<<ISI>>)
+![](img/orderdriver.PNG)
 
 Halaman Order pada Driver Ketika Mendapat Order
 
-![](img/<<ISI>>)
+![](img/driverchat.PNG)
 
 Halaman Order pada Pengguna, Chat Driver
 
-![](img/<<ISI>>)
+![](img/custchat.PNG)
 
 Perlu diperhatikan bahwa chat yang dikirim oleh user yang sedang login berada di sisi sebelah kanan dan lawan chatnya lain di sisi sebelah kirim. Isi chat jga harus ditampilkan sesuai urutan waktu diterima (paling atas adalah chat paling lama dan makin ke bawah chat makin baru).
 

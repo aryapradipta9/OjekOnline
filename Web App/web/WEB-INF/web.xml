@@ -78,4 +78,13 @@
         <url-pattern>/selectdriver</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>CloseOrder</servlet-name>
+        <servlet-class>CloseOrder</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CloseOrder</servlet-name>
+        <url-pattern>/closeorder</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -3,6 +3,7 @@
 <head>
     <title>VROOOM! - A Solution for Your Transportation</title>
     <link rel="stylesheet" href="css/styles.css">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
@@ -58,9 +59,9 @@ function showFO() {
 
         success:function(response) {
             console.log(response);
+            
             window.location.replace("chat-driver.html");
             document.cookie = "usrnmdrv=" + response;
-            
         }
     });
 }
@@ -68,6 +69,17 @@ function showFO() {
 function backToFindOrder(){
     document.querySelector(".find-order").style.display = "block";
     document.querySelector(".finding-order").style.display = "none";
+    var cook = getCookie("username");
+    $.ajax({
+        url:"http://localhost:3000/addonline/" + cook,
+        type:"GET",
+        crossDomain:true,
+
+        success:function(response) {
+            console.log(response);
+            window.location.reload();
+        }
+    });
 }
 </script>
 </body>

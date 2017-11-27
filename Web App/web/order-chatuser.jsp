@@ -51,8 +51,15 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <title>VROOOM! - A Solution for Your Transportation</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript">
+        function close() {
+            alert("HAHA");
+        }
+
+    </script>
 </head>
 <body>
 <div class="container">
@@ -84,11 +91,18 @@
                 <div class="step-guide">Complete your order</div>
             </div>
         </div>
-        <iframe src="http://localhost:8080/chat-user" style="width:100%; border:0px;"></iframe>
-        <%--<form action="order-chatuser.jsp?id=<%=request.getParameter("userId")%>" method="post">--%>
-            <%--<button class="chat-close">CLOSE</button>--%>
-        <%--</form>--%>
+
+        <iframe id="chat-frame" src="http://localhost:8080/chat-user" style="width:100%; height:300px; border:0px;"></iframe>
+        <form id="form-chat" action="closeorder?id=<%=request.getParameter("userId")%>" method="post">
+            <input type="hidden" name="origin" value="<%= request.getParameter("origin")%>">
+            <input type="hidden" name="destination"
+                   value="<%= request.getParameter("destination")%>">
+            <input type="hidden" name="driverId" value="<%= request.getParameter("driverId")%>">
+            <input type="hidden" name="userId" value="<%= request.getParameter("userId")%>">
+            <input type="submit" value="Close">
+        </form>
     </div>
 </div>
+
 </body>
 </html>
