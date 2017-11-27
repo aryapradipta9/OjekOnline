@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var async = require('async');
-var driveronline = require('./addonline')
 
 var online = [];
 var _flagCheck;
@@ -51,6 +50,12 @@ router.post('/:user', function(req, res) {
 });
 
 // ambil semua ojek yang online
+
+router.get('/:driver', function(req,res){
+    var temp = online.findIndex(function (val) {return val === req.params.driver});
+    online.splice(temp,1);
+    res.send(JSON.stringify(temp));
+});
 
 router.get('/', function(req, res) {
     res.send(JSON.stringify({"online" : online}));
