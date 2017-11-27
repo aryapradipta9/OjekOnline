@@ -26,11 +26,14 @@
 
     Cookie[] cookies = request.getCookies();
     Cookie login_cookie = null;
+    Cookie username = null;
 
     if (cookies != null) {
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("login_token")) {
                 login_cookie = cookie;
+            } else if (cookie.getName().equals("username")) {
+              username = cookie;
             }
         }
     }
@@ -50,16 +53,22 @@
             response.sendRedirect("/login.jsp");
             return;
         }else {
-            // Get Preferred Location
+            // cek apakah cookie driver username ada dan sama dengan id sekarang
+          // Get Preferred Location
 
 
             profile_json = new JSONObject(profile_string);
-            if (!profile_json.getBoolean("isDriver")) {
-              response.sendRedirect("/order-selectdestination.jsp?id=" + id);
-              return;
-            } else {
-                pref_loc_json = new JSONObject(pref_loc_string);
+            if (profile_json.getString("username").equals(username.getValue())) {
+                if (!profile_json.getBoolean("isDriver")) {
+                    response.sendRedirect("/order-selectdestination.jsp?id=" + id);
+                    return;
+                } else {
+                    pref_loc_json = new JSONObject(pref_loc_string);
 
+                }
+            } else {
+                response.sendRedirect("/login.jsp");
+                return;
             }
         }
 

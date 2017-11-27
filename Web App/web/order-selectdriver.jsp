@@ -205,14 +205,14 @@
                 <!-- NAMPILIN USER YANG BISA*/ -->
                 <div class="section-content">
                     <input type="hidden" name="origin" value="<%=request.getParameter("origin")%>">
-                    <input type="hidden" name="destination"
-                           value="<%=request.getParameter("destination")%>">
-                    <input type="hidden" name="userId" value="<%=request.getParameter("userId")%>">
-                    <input type="hidden" name="driverId"
-                           value="<%=jsonArray.getJSONObject(i).get("id")%>">
-                    <input type="hidden" name="driverUsername" value="<%=jsonArray.getJSONObject(i).get("username")%>">
+                        <input type="hidden" name="destination"
+                               value="<%=request.getParameter("destination")%>">
+                        <input type="hidden" name="userId" value="<%=request.getParameter("userId")%>">
+                        <input type="hidden" name="driverId"
+                               value="<%=jsonArray.getJSONObject(i).get("id")%>">
+                        <input type="hidden" name="driverUsername" value="<%=jsonArray.getJSONObject(i).get("username")%>">
 
-                    <div class="section-profilepic">
+                        <div class="section-profilepic">
                         <%// Get Profile
                         //String profile_string = profile.getProfile(login_cookie.getValue(), jsonArray.getJSONObject(i).getInt("id"));
 
