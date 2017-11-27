@@ -64,6 +64,7 @@
 <head>
     <title>VROOOM! - A Solution for Your Transportation</title>
     <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
 </head>
 <body>
 <div class="container">
