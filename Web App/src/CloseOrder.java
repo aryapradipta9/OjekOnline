@@ -35,7 +35,11 @@ public class CloseOrder extends HttpServlet {
       }
 
       String ua = request.getHeader("User-Agent");
-      if ((login_cookie != null) && (TokenChecker.checkToken(ua,login_cookie.getValue()))) {
+      String ipAddress = request.getHeader("X-FORWARDED-FOR");
+      if(ipAddress == null){
+        ipAddress = request.getRemoteAddr();
+      }
+      if ((login_cookie != null) && (TokenChecker.checkToken(ua,login_cookie.getValue(),ipAddress))) {
         int id = Integer.parseInt(request.getParameter("id"));
         String target = "http://localhost:3000/chat/c/" + username.getValue() + '/' + usrnmdrv.getValue();
         HttpRequest rv = new HttpRequest(target);
