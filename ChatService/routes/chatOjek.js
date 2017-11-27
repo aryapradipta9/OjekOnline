@@ -4,11 +4,11 @@ var mongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/ojek";
 var admin = require("firebase-admin");
 var token = require('./tokenList');
-var serviceAccount = require("../tubes-3-wbd-ojek-online-firebase-adminsdk-34z7r-6295bb28f0.json");
+var serviceAccount = require("../new-tubes3-firebase-adminsdk-9uhub-e94215cd34.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://tubes-3-wbd-ojek-online.firebaseio.com/"
+  databaseURL: "https://new-tubes3.firebaseio.com/"
 });
 
 

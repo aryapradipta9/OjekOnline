@@ -1,11 +1,12 @@
 function initFirebase() {
+  // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyBeW9Ip7oU9U640m7x-2XncWNtVwXBiV9s",
-    authDomain: "tubes-3-wbd-ojek-online.firebaseapp.com",
-    databaseURL: "https://tubes-3-wbd-ojek-online.firebaseio.com",
-    projectId: "tubes-3-wbd-ojek-online",
-    storageBucket: "tubes-3-wbd-ojek-online.appspot.com",
-    messagingSenderId: "183053726880"
+    apiKey: "AIzaSyB1e4WeTXWPyNrMaY2gjOXoLf0yJdoIomo",
+    authDomain: "new-tubes3.firebaseapp.com",
+    databaseURL: "https://new-tubes3.firebaseio.com",
+    projectId: "new-tubes3",
+    storageBucket: "",
+    messagingSenderId: "83559588116"
   };
   firebase.initializeApp(config);
 }

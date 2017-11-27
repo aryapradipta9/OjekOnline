@@ -17,8 +17,9 @@ function getCookie(cname) {
 $(document).ready(function(){
   var usrnm = getCookie("username");
   var usrnmdrv = getCookie("usrnmdrv");
-  //console.log(usrnmdrv);
+  console.log(usrnmdrv);
   loadMessages(usrnm, usrnmdrv);
+
 });
 
 firebase.messaging().onMessage(function(payload) {
@@ -46,7 +47,7 @@ angular.module('chatApp', [])
     }
   }
 })
-.controller('chatCtrl', function($scope) {
+.controller('chatCtrl', ['$scope', function($scope) {
     $scope.messages = [];
     $scope.username = getCookie("user");
     var usrnm = getCookie("username");
@@ -54,6 +55,13 @@ angular.module('chatApp', [])
     $scope.send = function() {
         $scope.messages.push({id:$scope.messages.length, message:$scope.chatInput, type:'message-sent'});
         $.post('http://localhost:3000/chat/' + usrnm + '/' + usrnmdrv,{"id": $scope.messages.length, "message": $scope.chatInput, type:'message-sent'},
+          function(data, status) {
+            console.log('data: ' + data);
+          });
+        $scope.chatInput = '';
+    };
+    $scope.close = function() {
+        $.post('http://localhost:3000/chat/' + usrnm + '/' + usrnmdrv,{"id":0, "message":'chat-finished', type:'message-sent'},
           function(data, status) {
             console.log('data: ' + data);
           });
@@ -68,7 +76,8 @@ angular.module('chatApp', [])
     	}
     	$scope.messages.push({id:$scope.messages.length, message:msg, type:typ});
     }
-});
+    
+}]);
 
 function updateChat(msg, me) {
 	var scope = angular.element($(".chat-display")).scope();
@@ -86,25 +95,20 @@ function updateChat(msg, me) {
 // }
 
 function loadMessages(usrnm, usrnmdrv) {
-    
-	$.ajax({
-      type:'GET',
-      url:'http://localhost:3000/chat/' + usrnm + '/' + usrnmdrv,
-      dataType: 'json',
-      success: function(result){
-          var data = result;
-        console.log('data: ' + data);
-    	}
-   	})
-   	.then(function(data) {
-   		hist = JSON.stringify(data);
-   		if (hist.length != 0) {
-   			$.each(hist, function(index, value) {
-   				updateChat(value.message, value.type);
-   				console.log(value);
-   			})
-   		}
-   	});
+    // request('http://localhost:3000/chat/' + usrnm + '/' + usrnmdrv)
+    $.get('http://localhost:3000/chat/' + usrnm + '/' + usrnmdrv,
+    function(data) {
+      console.log('data: ' + data);
+      var hist = data;
+      console.log(JSON.stringify(hist[0]));
+      if (Object.keys(hist).length != 0) {
+          $.each(hist, function(index, value) {
+              updateChat(value.message, value.type == 'message-sent');
+           console.log(index);   
+           console.log(value);
+          })
+      }
+    })
 }
 
 //cookie.controller('cookieCtrl', ['$scope', '$cookies', function($cookies) {

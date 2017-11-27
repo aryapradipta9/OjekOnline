@@ -57,6 +57,7 @@ function showFO() {
         crossDomain:true,
 
         success:function(response) {
+            document.cookie = "usrnmdrv=" + response.user;
             window.location.replace("chat-driver.html");
         }
     });

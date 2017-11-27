@@ -34,7 +34,7 @@
         <div scroll-bottom="messages" class="chat-display">
             <div class="scroll">
                 <div class={{chat.type}} ng-repeat="chat in messages">
-                    <p>{{chat.content}}</p>
+                    <p>{{chat.message}}</p>
                 </div>
             </div>
         </div>
@@ -43,11 +43,8 @@
             <button class="chat-send" type="submit">Kirim</button>
         </form>
     </md-content>
-    <form name="close" ng-submit="close()">
-        <input type="hidden" name="id" value="0">
-        <input type="hidden" name="message" value="chat-finished">
-        <input type="hidden" name="type" value="message-sent">
-        <button class="chat-close" type="submit">CLOSE</button>
+    <form ng-submit="close()">
+        <input class="chat-close" type="submit" value="CLOSE">
     </form>
 </div>
 <!-- <button class="chat-close">CLOSE</button> -->

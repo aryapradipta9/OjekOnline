@@ -32,11 +32,13 @@ router.post('/:user', function(req, res) {
             // buat mapping (?)
             var mapping = driveronline.map;
             var cont = mapping.splice(mapping.findIndex(e => e.driver === req.params.user),1);
-            clearInterval(_flagCheck);
-            console.log("empty");
-            res.cookie('user',cont[0].cust);
-            res.send(JSON.stringify({ "user" : cont[0].cust})); 
+            
+            
+            res.cookie('usrnmdrv',cont[0].cust);
+            console.log(cont[0].cust);
+            res.send(JSON.stringify({ "usrnmdrv" : cont[0].cust})); 
             //theCallback(); // the function to run once all flags are true
+            clearInterval(_flagCheck);
         }
     }, 100);
 

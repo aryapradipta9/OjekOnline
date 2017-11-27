@@ -15,7 +15,7 @@ importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js');
 //   messagingSenderId: "183053726880"
 // };
 firebase.initializeApp({
-  messagingSenderId: "183053726880"
+  messagingSenderId: "83559588116"
 });
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
