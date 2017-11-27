@@ -26,14 +26,14 @@ router.post('/:user/:target', function(req, res){
         db.collection("chat").insertOne(inpData,function(err,resu){
             if (err) throw err;
             console.log(inpData);
-            res.send(JSON.stringify({"status" : "ok"}));
+            //res.send(JSON.stringify({"status" : "ok"}));
         });
         db.close();
     });
     // FIREBASE SECTION
     var tokenList = token.tokenList;
     var user = req.params.target;
-    var registrationToken = tokenList.find(o => o.user === user);
+    var registrationToken = tokenList.find(o => o.username === user).token;
     var payload = {
         data: {
           "message": message
@@ -63,7 +63,7 @@ router.get('/:user/:target', function(req, res){
         $or:[
           {"sender" : sender, "receiver" : receiver},
           {"sender" : receiver, "receiver" : sender}
-        ], "message" : {$ne : null}};
+        ]};
     mongoClient.connect(url, function(err,db) {
         if (err) throw err;
         db.collection("chat").find(query).sort({"_id" : 1}).toArray(function(err, result){

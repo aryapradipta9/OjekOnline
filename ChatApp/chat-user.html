@@ -33,7 +33,7 @@
     <md-content>
         <div class="chat-display">
             <div class={{chat.type}} ng-repeat="chat in messages">
-                <p>{{chat.content}}</p>
+                <p>{{chat.message}}</p>
             </div>
         </div>
         <form class="chat-content" ng-submit="send()">
@@ -41,9 +41,24 @@
             <button class="chat-send" type="submit">Kirim</button>
         </form>
     </md-content>
+    <form name="close" ng-submit="close()">
+        <input type="hidden" name="id" value="0">
+        <input type="hidden" name="message" value="chat-finished">
+        <input type="hidden" name="type" value="message-sent">
+        <button class="chat-close" type="submit">CLOSE</button>
+    </form>
 </div>
-<button class="chat-close">CLOSE</button>
+<!-- <button class="chat-close">CLOSE</button> -->
 
 <script src="js/angular-chat.js"></script>
+<script>
+    // function endChat(){
+    //     var usrnmdrv = getCookie("usrnmdrv");
+    //     $.post('http://localhost:3000/' + usrnmdrv ,{"id":"0" , "message":"chat-finished" , type:'message-sent'},
+    //       function(data, status) {
+    //         console.log('data: ' + data);
+    //       });
+    // }
+</script>
 </body>
 </html>

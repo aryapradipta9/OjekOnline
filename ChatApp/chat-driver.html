@@ -27,7 +27,7 @@
     <div class="chat">
         <div class="chat-display">
             <div class={{chat.type}} ng-repeat="chat in messages">
-                <p>{{chat.content}}</p>
+                <p>{{chat.message}}</p>
             </div>
         </div>
         <form class="chat-content" ng-submit="send()">
@@ -36,8 +36,26 @@
         </form>
     </div>
 </div>
-<button class="chat-close">CLOSE</button>
+<!-- <button class="chat-close">CLOSE</button> -->
 
 <script src="js/angular-chat.js"></script>
+<script>
+    // var cook = getCookie("username");
+    // function showFindOrder(){
+    //     $.ajax({
+    //         url:"http://localhost:3000/" + cook,
+    //         type:"POST",
+
+    //         data:{
+    //         "message" : "chat-finished"
+    //         },
+    //         crossDomain:true,
+
+    //         success:function(response) {
+    //             window.location.replace("index.html");
+    //         }
+    //     });
+    // }
+</script>
 </body>
 </html>

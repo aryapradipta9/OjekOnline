@@ -62,7 +62,7 @@ public class SelectDriver extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Cookie cook = new Cookie("usrnmdrv", request.getParameter("driverUsername"));
         response.addCookie(cook);
-        RequestDispatcher rd = request.getRequestDispatcher("order-complete.jsp?id=" + id);
+        RequestDispatcher rd = request.getRequestDispatcher("order-chatuser.jsp?id=" + id);
         rd.forward(request, response);
       }
     } catch (Exception e) {

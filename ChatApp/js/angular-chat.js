@@ -23,7 +23,11 @@ $(document).ready(function(){
 
 firebase.messaging().onMessage(function(payload) {
   console.log("Message received. ", payload);
-  updateChat(payload.data.message, false);
+  if(payload.data.message == "chat-finished"){
+    window.location.replace("index.html");
+  }else{
+    updateChat(payload.data.message, false);
+  }
 });
 
 
@@ -36,8 +40,8 @@ chat.controller('chatCtrl', ['$scope', function($scope) {
     var usrnm = getCookie("username");
     var usrnmdrv = getCookie("usrnmdrv");
     $scope.send = function() {
-        $scope.messages.push({id:$scope.messages.length, content:$scope.chatInput, type:'message-sent'});
-        $.post('http://localhost:3000/chat/' + usrnm + '/' + usrnmdrv,{"id": $scope.messages.length, "content": $scope.chatInput, type:'message-sent'},
+        $scope.messages.push({id:$scope.messages.length, message:$scope.chatInput, type:'message-sent'});
+        $.post('http://localhost:3000/chat/' + usrnm + '/' + usrnmdrv,{"id": $scope.messages.length, "message": $scope.chatInput, type:'message-sent'},
           function(data, status) {
             console.log('data: ' + data);
           });
@@ -50,7 +54,7 @@ chat.controller('chatCtrl', ['$scope', function($scope) {
     	} else {
     		typ = 'message-received';
     	}
-    	$scope.messages.push({id:$scope.messages.length, content:msg, type:typ});
+    	$scope.messages.push({id:$scope.messages.length, message:msg, type:typ});
     }
 }]);
 
