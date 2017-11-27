@@ -47,6 +47,7 @@
 
     if (login_cookie == null) {
         response.sendRedirect("login.jsp");
+        return;
     } else {
         String profile_string = user
                 .getProfile(login_cookie.getValue(), Integer.parseInt(request.getParameter("id")));

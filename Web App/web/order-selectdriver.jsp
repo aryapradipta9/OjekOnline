@@ -7,6 +7,7 @@
 <%@ page import="user.Profile" %>
 <%@ page import="util.Env" %>
 <%@ page import="util.Header" %>
+<%@ page import="util.HttpRequest" %>
 <%@ page import="user.Profile" %>
 <%
     Env env = new Env();
@@ -39,6 +40,7 @@
     JSONObject profile_json = null;
     if (login_cookie == null) {
         response.sendRedirect("login.jsp");
+        return;
     }else{
         String profile_string = profile
                 .getProfile(login_cookie.getValue(), Integer.parseInt(request.getParameter("id")));
@@ -106,12 +108,27 @@
                                     request.getParameter("preferreddriver"),
                                     Integer.parseInt(request.getParameter("id")));
                     order_json = new JSONObject(order_string);
+                    // bersih bersih json
+
+                    HttpRequest xhr = new HttpRequest("http://localhost:3000/addonline");
+
+                    JSONObject onlineDriver = new JSONObject(xhr.getRequest(""));
+                    JSONArray online = onlineDriver.getJSONArray("online");
+
                     JSONObject preferred = order_json.getJSONObject("preferred");
+
                     if (!preferred.toString().equals("{}")) {
-                        Cookie cook = new Cookie("usrnmdrv", order_json.getJSONObject("preferred").getString("username"));
-                        response.addCookie(cook);
+                        boolean found = false;
+                        for (int i = 0; i < online.length(); i++) {
+                            System.out.println(online.getString(i));
+                            if (online.getString(i).equals(order_json.getJSONObject("preferred").getString("username")))
+                                found = true;
+                        }
+                        if (found){
+//                        Cookie cook = new Cookie("usrnmdrv", order_json.getJSONObject("preferred").getString("username"));
+//                        response.addCookie(cook);
             %>
-            <form action="order-chatuser.jsp?id=<%=request.getParameter("userId")%>" method="post">
+            <form action="selectdriver?id=<%=request.getParameter("userId")%>" method="post">
                 <div class="section-content">
                     <input type="hidden" name="origin" value="<%=request.getParameter("origin")%>">
                     <input type="hidden" name="destination"
@@ -119,6 +136,7 @@
                     <input type="hidden" name="userId" value="<%=request.getParameter("userId")%>">
                     <input type="hidden" name="driverId"
                            value="<%=order_json.getJSONObject("preferred").get("id")%>">
+                    <input type="hidden" name="driverUsername" value="<%=order_json.getJSONObject("preferred").get("username")%>">
 
                     <div class="section-profilepic">
                         <%
@@ -146,6 +164,10 @@
                     </div>
             </form>
             <%
+                        } else {
+                            out.println(
+                                    "<div class=\"section-no-results\"><br>No Results Found :( <br><br></div>");
+                        }
                     } else {
                         out.println(
                                 "<div class=\"section-no-results\"><br>No Results Found :( <br><br></div>");
@@ -162,21 +184,35 @@
             <%
                 JSONArray jsonArray = order_json.getJSONArray("other");
                 if (jsonArray.length() > 0) {
+                    HttpRequest xhr = new HttpRequest("http://localhost:3000/addonline");
+
+                    JSONObject onlineDriver = new JSONObject(xhr.getRequest(""));
+                    JSONArray online = onlineDriver.getJSONArray("online");
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        Cookie cook = new Cookie("usrnmdrv", jsonArray.getJSONObject(i).getString("username"));
-                        response.addCookie(cook);
+                        boolean found = false;
+                        for (int j = 0; j < online.length(); j++) {
+                            System.out.println(online.getString(j));
+                            if (online.getString(j).equals(jsonArray.getJSONObject(i).getString("username")))
+                                found = true;
+                        }
+                        if (found){
+//                        Cookie cook = new Cookie("usrnmdrv", jsonArray.getJSONObject(i).getString("username"));
+//                        response.addCookie(cook);
             %>
 
-            <form action="order-chatuser.jsp?id=<%=request.getParameter("userId")%>" method="post">
+            <%--<form action="order-chatuser.jsp?id=<%=request.getParameter("userId")%>" method="post">--%>
+            <form action="selectdriver?id=<%=request.getParameter("userId")%>" method="post">
                 <!-- NAMPILIN USER YANG BISA*/ -->
                 <div class="section-content">
                     <input type="hidden" name="origin" value="<%=request.getParameter("origin")%>">
-                    <input type="hidden" name="destination"
-                           value="<%=request.getParameter("destination")%>">
-                    <input type="hidden" name="userId" value="<%=request.getParameter("userId")%>">
-                    <input type="hidden" name="driverId"
-                           value="<%=jsonArray.getJSONObject(i).get("id")%>">
-                    <div class="section-profilepic">
+                        <input type="hidden" name="destination"
+                               value="<%=request.getParameter("destination")%>">
+                        <input type="hidden" name="userId" value="<%=request.getParameter("userId")%>">
+                        <input type="hidden" name="driverId"
+                               value="<%=jsonArray.getJSONObject(i).get("id")%>">
+                        <input type="hidden" name="driverUsername" value="<%=jsonArray.getJSONObject(i).get("username")%>">
+
+                        <div class="section-profilepic">
                         <%// Get Profile
                         //String profile_string = profile.getProfile(login_cookie.getValue(), jsonArray.getJSONObject(i).getInt("id"));
 
@@ -201,12 +237,15 @@
                 </div>
             </form>
 
-            <% }
+            <% } else { %>
+            <div class="section-no-results"><br>No Results Found :( <br><br></div>
+            <%  }}
             } else { %>
             <div class="section-no-results"><br>No Results Found :( <br><br></div>
             <%
                 }
             %>
+
         </div>
     </div>
 </div>

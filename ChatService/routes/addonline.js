@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var driveronline = require('./driveronline');
 
+var mapping = [];
+
 /* GET add driver status and prefloc */
 /* MUST USE X-WWW-FORM-URLENCODED */
 router.post('/', function(req, res) {
@@ -22,9 +24,11 @@ router.post('/', function(req, res) {
     });
 });
 
-router.get('/:user', function(req,res){
-    driveronline.online.splice(driveronline.online.findIndex(e => e.user === req.params.user),1)
-    res.send(JSON.stringify({"driver" : req.params.user}));
+router.get('/:user/:driver', function(req,res){
+    driveronline.online.splice(driveronline.online.findIndex(e => e.user === req.params.driver),1);
+    mapping.push({"cust" : req.params.user, "driver" : req.params.driver});
+    res.send(JSON.stringify({"driver" : req.params.driver}));
 });
 
-module.exports = router;
+module.exports.route = router;
+module.exports.map = mapping;

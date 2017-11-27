@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var async = require('async');
+var driveronline = require('./addonline')
 
 var online = [];
 var _flagCheck;
@@ -10,7 +11,7 @@ var _flagCheck;
 /* MUST USE X-WWW-FORM-URLENCODED */
 router.post('/:user', function(req, res) {
     console.log(req.body.location);
-    var location = req.body.location;
+    
     var mongoClient = require('mongodb').MongoClient;
     var url = "mongodb://localhost:27017/chat";
     res.setHeader('Content-Type', 'application/json');
@@ -24,14 +25,17 @@ router.post('/:user', function(req, res) {
     // push ke online
     var curOnline = {};
     curOnline.user = user;
-    curOnline.location = location;
-    online.push(curOnline);
+    online.push(user);
     console.log(JSON.stringify(online));
     _flagCheck = setInterval(function() {
-        if (online.filter(function(value){ return value.user == req.params.user;}).length == 0) {
+        if (online.filter(function(value){ return value == req.params.user;}).length == 0) {
+            // buat mapping (?)
+            var mapping = driveronline.map;
+            var cont = mapping.splice(mapping.findIndex(e => e.driver === req.params.user),1);
             clearInterval(_flagCheck);
             console.log("empty");
-            res.send(JSON.stringify({ "user" : req.params.user})); 
+            res.cookie('user',cont[0].cust);
+            res.send(JSON.stringify({ "user" : cont[0].cust})); 
             //theCallback(); // the function to run once all flags are true
         }
     }, 100);
@@ -43,7 +47,7 @@ router.post('/:user', function(req, res) {
 // ambil semua ojek yang online
 
 router.get('/', function(req, res) {
-    res.send(JSON.stringify(online));
+    res.send(JSON.stringify({"online" : online}));
 });
 
 router.delete('/:user', function(req, res) {
