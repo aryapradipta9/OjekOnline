@@ -14,29 +14,35 @@ router.post('/:user', function(req, res) {
     
     var mongoClient = require('mongodb').MongoClient;
     var url = "mongodb://localhost:27017/chat";
-    res.setHeader('Content-Type', 'application/json');
+    //res.setHeader('Content-Type', 'application/json');
     var user = req.params.user;
     // cek di online list, apakah udah ada di list
-    var matchUsername = online.filter(function(value){ return value.user == req.params.user;});
+    var matchUsername = online.filter(function(value){ return value == req.params.user;});
+    
     if (matchUsername.length > 0) {
         // delete
-        matchUsername.splice(matchUsername.findIndex(e => e.user === req.params.user),1);
+        // var tempy = matchUsername.findIndex(e => e == req.params.user);
+        // console.log(tempy);
+        // matchUsername.splice(tempy,1);
+        // console.log(JSON.stringify(matchUsername));
+    } else {
+        online.push(user);
     }
     // push ke online
     var curOnline = {};
     curOnline.user = user;
-    online.push(user);
     console.log(JSON.stringify(online));
     _flagCheck = setInterval(function() {
         if (online.filter(function(value){ return value == req.params.user;}).length == 0) {
             // buat mapping (?)
             var mapping = driveronline.map;
             var cont = mapping.splice(mapping.findIndex(e => e.driver === req.params.user),1);
-            clearInterval(_flagCheck);
-            console.log("empty");
-            res.cookie('user',cont[0].cust);
-            res.send(JSON.stringify({ "user" : cont[0].cust})); 
+            
+            console.log("test : " + cont[0].cust);
+            res.cookie('usrnmdrv','cont[0].cust',{domain:'localhost:8080'});
+            res.send(cont[0].cust); 
             //theCallback(); // the function to run once all flags are true
+            clearInterval(_flagCheck);
         }
     }, 100);
 
