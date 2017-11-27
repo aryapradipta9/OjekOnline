@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>VROOOM! - A Solution for Your Transportation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">
+                LOOKING FOR AN ORDER
+            </div>
+        </div>
+            
+        <button class="find-order" onclick="showFO()">FIND ORDER</button>
+
+        <div class="finding-order">
+            <h2>Finding Order.....</h2>
+            <button class="chat-close">CANCEL</button>
+        </div>
+    </div>
+</div>
+<div id="res"></div>
+<script>
+    document.querySelector(".find-order").style.display = "block";
+    document.querySelector(".finding-order").style.display = "none";
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+      }
+  }
+  return "";
+}
+
+function showFO() {
+    document.querySelector(".find-order").style.display = "none";
+    document.querySelector(".finding-order").style.display = "block";
+    var cook = getCookie("username");
+    $.ajax({
+        url:"http://localhost:3000/addonline/" + cook,
+        type:"POST",
+
+        data:{
+          "location" : ["ITB","Cisitu"]
+        },
+        crossDomain:true,
+
+        success:function(response) {
+            window.location.replace("chat-driver.html");
+        }
+    });
+}
+</script>
+</body>
+</html>

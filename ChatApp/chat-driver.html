@@ -8,6 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/token.js"></script>
+    
+
     <script>
         //var worker = new Worker('js/firebase-messaging-sw.js');
         initFirebase();
@@ -17,10 +19,12 @@
 </head>
 <body>
 
-<div class="chat" ng-app="chatApp" ng-controller="chatCtrl">
-    <h2 style="color:#21CB1E">Got an Order!</h2>
-    <h3>{{username}}</h3>
-    <md-content>
+<div ng-app="chatApp" ng-controller="chatCtrl">
+    <div style="display:flex; justify-content:center;">
+        <h2 style="color:#21CB1E; margin:auto;">Got an Order!</h2>
+        <h3 style="margin:auto;">{{username}}</h3>
+    </div>
+    <div class="chat">
         <div class="chat-display">
             <div class={{chat.type}} ng-repeat="chat in messages">
                 <p>{{chat.content}}</p>
@@ -30,7 +34,7 @@
             <textarea ng-model="chatInput"></textarea>
             <button class="chat-send" type="submit">Kirim</button>
         </form>
-    </md-content>
+    </div>
 </div>
 <button class="chat-close">CLOSE</button>
 

@@ -1,0 +1,200 @@
+[debug] [2017-11-24T09:11:54.892Z] ----------------------------------------------------------------------
+[debug] [2017-11-24T09:11:54.895Z] Command:       E:\ProgramFiles\nodejs\node.exe C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-24T09:11:54.895Z] CLI Version:   3.15.3
+[debug] [2017-11-24T09:11:54.897Z] Platform:      win32
+[debug] [2017-11-24T09:11:54.897Z] Node Version:  v8.9.1
+[debug] [2017-11-24T09:11:54.898Z] Time:          Fri Nov 24 2017 16:11:54 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:11:54.898Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-24T09:11:54.907Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-24T09:11:54.908Z] > authorizing via signed-in user
+[debug] [2017-11-24T09:11:54.909Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-11-24T09:11:54.910Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/s2uZiQwE31tmlmuO0PlKnz-JQq9ZEW0biY7y7l3UeDw',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Nov 24 2017 16:11:54 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:11:55.518Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:11:55.550Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:11:55 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:11:57.135Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:11:57.141Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/tubes-3-wbd-ojek-online/tokens  
+ Fri Nov 24 2017 16:11:57 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:11:58.307Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\others\WebApplicationProjects\TugasBesar2_2017\ChatService\myapp'...
+[info] 
+[debug] [2017-11-24T09:11:58.322Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:11:58 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:12:00.001Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:12:00.007Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/183053726880/clients/_:getWebAppConfig  
+ Fri Nov 24 2017 16:12:00 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:12:01.129Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:12:01.174Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\lib\serve\hosting.js:34:18)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Server.emit (events.js:208:7)
+    at emitListeningNT (net.js:1378:10)
+    at _combinedTickCallback (internal/process/next_tick.js:135:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2017-11-24T09:12:05.171Z] ----------------------------------------------------------------------
+[debug] [2017-11-24T09:12:05.175Z] Command:       E:\ProgramFiles\nodejs\node.exe C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-24T09:12:05.176Z] CLI Version:   3.15.3
+[debug] [2017-11-24T09:12:05.177Z] Platform:      win32
+[debug] [2017-11-24T09:12:05.177Z] Node Version:  v8.9.1
+[debug] [2017-11-24T09:12:05.178Z] Time:          Fri Nov 24 2017 16:12:05 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:12:05.179Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-24T09:12:05.187Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-24T09:12:05.188Z] > authorizing via signed-in user
+[debug] [2017-11-24T09:12:05.192Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:12:05 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:12:06.996Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:12:07.002Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/tubes-3-wbd-ojek-online/tokens  
+ Fri Nov 24 2017 16:12:07 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:12:08.504Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\others\WebApplicationProjects\TugasBesar2_2017\ChatService\myapp'...
+[info] 
+[debug] [2017-11-24T09:12:08.519Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:12:08 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:12:10.755Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:12:10.761Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/183053726880/clients/_:getWebAppConfig  
+ Fri Nov 24 2017 16:12:10 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:12:11.981Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:12:12.026Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\lib\serve\hosting.js:34:18)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Server.emit (events.js:208:7)
+    at emitListeningNT (net.js:1378:10)
+    at _combinedTickCallback (internal/process/next_tick.js:135:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2017-11-24T09:20:38.437Z] ----------------------------------------------------------------------
+[debug] [2017-11-24T09:20:38.440Z] Command:       E:\ProgramFiles\nodejs\node.exe C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-24T09:20:38.442Z] CLI Version:   3.15.3
+[debug] [2017-11-24T09:20:38.442Z] Platform:      win32
+[debug] [2017-11-24T09:20:38.443Z] Node Version:  v8.9.1
+[debug] [2017-11-24T09:20:38.443Z] Time:          Fri Nov 24 2017 16:20:38 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:38.444Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-24T09:20:38.452Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-24T09:20:38.455Z] > authorizing via signed-in user
+[debug] [2017-11-24T09:20:38.457Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:20:38 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:40.795Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:20:40.802Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/tubes-3-wbd-ojek-online/tokens  
+ Fri Nov 24 2017 16:20:40 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:42.523Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\others\WebApplicationProjects\TugasBesar2_2017\ChatService\myapp'...
+[info] 
+[debug] [2017-11-24T09:20:42.538Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:20:42 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:44.502Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:20:44.508Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/183053726880/clients/_:getWebAppConfig  
+ Fri Nov 24 2017 16:20:44 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:46.241Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:20:46.287Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\lib\serve\hosting.js:34:18)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Server.emit (events.js:208:7)
+    at emitListeningNT (net.js:1378:10)
+    at _combinedTickCallback (internal/process/next_tick.js:135:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2017-11-24T09:20:49.129Z] ----------------------------------------------------------------------
+[debug] [2017-11-24T09:20:49.133Z] Command:       E:\ProgramFiles\nodejs\node.exe C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-24T09:20:49.135Z] CLI Version:   3.15.3
+[debug] [2017-11-24T09:20:49.135Z] Platform:      win32
+[debug] [2017-11-24T09:20:49.136Z] Node Version:  v8.9.1
+[debug] [2017-11-24T09:20:49.138Z] Time:          Fri Nov 24 2017 16:20:49 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:49.138Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-24T09:20:49.147Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-24T09:20:49.147Z] > authorizing via signed-in user
+[debug] [2017-11-24T09:20:49.152Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:20:49 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:50.853Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:20:50.855Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/tubes-3-wbd-ojek-online/tokens  
+ Fri Nov 24 2017 16:20:50 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:52.183Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\others\WebApplicationProjects\TugasBesar2_2017\ChatService\myapp'...
+[info] 
+[debug] [2017-11-24T09:20:52.205Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:20:52 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:54.537Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:20:54.543Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/183053726880/clients/_:getWebAppConfig  
+ Fri Nov 24 2017 16:20:54 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:20:55.560Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:20:55.602Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\lib\serve\hosting.js:34:18)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Server.emit (events.js:208:7)
+    at emitListeningNT (net.js:1378:10)
+    at _combinedTickCallback (internal/process/next_tick.js:135:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2017-11-24T09:40:31.977Z] ----------------------------------------------------------------------
+[debug] [2017-11-24T09:40:31.981Z] Command:       E:\ProgramFiles\nodejs\node.exe C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-24T09:40:31.981Z] CLI Version:   3.15.3
+[debug] [2017-11-24T09:40:31.981Z] Platform:      win32
+[debug] [2017-11-24T09:40:31.982Z] Node Version:  v8.9.1
+[debug] [2017-11-24T09:40:31.982Z] Time:          Fri Nov 24 2017 16:40:31 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:40:31.982Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-24T09:40:31.990Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-24T09:40:31.991Z] > authorizing via signed-in user
+[debug] [2017-11-24T09:40:31.993Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:40:31 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:40:34.352Z] Error: read ECONNRESET
+    at _errnoException (util.js:1024:11)
+    at TLSWrap.onread (net.js:615:25)
+[error] 
+[error] Error: Server Error. read ECONNRESET
+[debug] [2017-11-24T09:42:36.901Z] ----------------------------------------------------------------------
+[debug] [2017-11-24T09:42:36.904Z] Command:       E:\ProgramFiles\nodejs\node.exe C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-24T09:42:36.905Z] CLI Version:   3.15.3
+[debug] [2017-11-24T09:42:36.905Z] Platform:      win32
+[debug] [2017-11-24T09:42:36.905Z] Node Version:  v8.9.1
+[debug] [2017-11-24T09:42:36.906Z] Time:          Fri Nov 24 2017 16:42:36 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:42:36.906Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-24T09:42:36.915Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-24T09:42:36.916Z] > authorizing via signed-in user
+[debug] [2017-11-24T09:42:36.919Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:42:36 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:42:38.332Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:42:38.335Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/tubes-3-wbd-ojek-online/tokens  
+ Fri Nov 24 2017 16:42:38 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:42:39.609Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\others\WebApplicationProjects\TugasBesar2_2017\ChatService\myapp'...
+[info] 
+[debug] [2017-11-24T09:42:39.614Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/tubes-3-wbd-ojek-online  
+ Fri Nov 24 2017 16:42:39 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:42:41.163Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:42:41.165Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/183053726880/clients/_:getWebAppConfig  
+ Fri Nov 24 2017 16:42:41 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-11-24T09:42:45.068Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-24T09:42:45.108Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (C:\Users\ROG\AppData\Roaming\npm\node_modules\firebase-tools\lib\serve\hosting.js:34:18)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Server.emit (events.js:208:7)
+    at emitListeningNT (net.js:1378:10)
+    at _combinedTickCallback (internal/process/next_tick.js:135:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.

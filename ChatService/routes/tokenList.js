@@ -6,13 +6,14 @@ var router = express.Router();
 
 var tokenList = [];
 
-router.post('/:user', function(req, res){
+router.post('/:user/:token', function(req, res){
     var user = req.params.user;
-    var token = req.body.token;
+    var token = req.params.token;
     var inp = {"username" : user, "token" : token};
     tokenList.push(inp);
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({"status" : "ok"}));
+    console.log(JSON.stringify(tokenList));
 });
 
 router.get('/:user', function(req, res){
@@ -21,6 +22,7 @@ router.get('/:user', function(req, res){
     //var inp = {"token" : token};
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(token));
+    console.log(JSON.stringify(token));
 });
 
 module.exports.route = router;

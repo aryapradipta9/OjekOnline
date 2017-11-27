@@ -32,23 +32,15 @@ var chat = angular.module('chatApp', []);
 
 chat.controller('chatCtrl', ['$scope', function($scope) {
     $scope.messages = [];
-    $scope.username = getCookie(user);
+    $scope.username = getCookie("user");
+    var usrnm = getCookie("username");
+    var usrnmdrv = getCookie("usrnmdrv");
     $scope.send = function() {
         $scope.messages.push({id:$scope.messages.length, content:$scope.chatInput, type:'message-sent'});
-        $.ajax({        
-            type : 'POST',
-            url : 'http://localhost:3000/chat/',
-            contentType : 'application/json',
-            dataType: 'json',
-            data: JSON.stringify({"id": $scope.messages.length, "content": $scope.chatInput, type:'message-sent'}),
-            crossDomain:true,
-            success : function(data) {
-                console.log(data);
-            },
-            error : function(xhr, status, error) {
-                console.log(xhr.error);                   
-            }
-        });
+        $.post('http://localhost:3000/chat/' + usrnm + '/' + usrnmdrv,{"id": $scope.messages.length, "content": $scope.chatInput, type:'message-sent'},
+          function(data, status) {
+            console.log('data: ' + data);
+          });
         $scope.chatInput = '';
     };
     $scope.update = function(msg, me) {
@@ -83,8 +75,8 @@ function loadMessages(usrnm, usrnmdrv) {
       type:'GET',
       url:'http://localhost:3000/chat/' + usrnm + '/' + usrnmdrv,
       dataType: 'json',
-      data: data,
-      success: function(data){
+      success: function(result){
+          var data = result;
         console.log('data: ' + data);
     	}
    	})

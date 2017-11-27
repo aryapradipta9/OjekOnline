@@ -38,21 +38,27 @@ function generateToken() {
     console.log(token);
     usrnm = getCookie("username");
     console.log(usrnm);
-    if (currentToken) {
-       $.ajax({        
+    if (token) {
+      $.post("http://localhost:3000/token/"+usrnm+"/"+token,  {
+        
+      }, function(data, status) {
+        console.log('data: ' + data);
+      });/*
+       $.post({        
             type : 'POST',
-            url : "http://localhost:3000/receivetoken/",
-            contentType : 'application/json',
+            url : "http://localhost:3000/token/"+usrnm,
+            contentType : 'application/x-www-form-urlencoded',
             dataType: 'json',
-            data: JSON.stringify({"username": usrnm, "token": currentToken}),
+            data: JSON.stringify({"token": token}),
             success : function(data) {
                 console.log('data: ' + data);
             },
             error : function(xhr, status, error) {
+                console.log("error");
                 console.log(xhr.error);                   
             }
         });
-       token = currentToken;
+        */
     } else {
       console.log('No Instance ID token available. Request permission to generate one.');
     }

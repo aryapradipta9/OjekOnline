@@ -9,6 +9,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/token.js"></script>
     <script>
+        var tokenUser = getCookie("username");
+        var tokenDriver = getCookie("usrnmdrv");
+        $.ajax({
+            type:'GET',
+            url:'http://localhost:3000/driver/' + tokenUser + '/' + tokenDriver,
+            success: function(result){
+                var data = result;
+            console.log('data: ' + data);
+            }
+        })        
+    </script>
+    <script>
         //var worker = new Worker('js/firebase-messaging-sw.js');
         initFirebase();
         var token = generateToken();
