@@ -66,6 +66,7 @@ angular.module('chatApp', [])
             console.log('data: ' + data);
           });
         $scope.chatInput = '';
+        window.parent.document.getElementById("form-chat").submit();
     };
     $scope.update = function(msg, me) {
     	var typ = '';
