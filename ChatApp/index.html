@@ -19,7 +19,7 @@
 
         <div class="finding-order">
             <h2>Finding Order.....</h2>
-            <button class="chat-close">CANCEL</button>
+            <button class="chat-close" onclick="backToFindOrder()">CANCEL</button>
         </div>
     </div>
 </div>
@@ -64,6 +64,11 @@ function showFO() {
             document.cookie = "usrnmdrv=" + response;
         }
     });
+}
+
+function backToFindOrder(){
+    document.querySelector(".find-order").style.display = "block";
+    document.querySelector(".finding-order").style.display = "none";
 }
 </script>
 </body>

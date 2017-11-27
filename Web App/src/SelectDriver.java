@@ -58,7 +58,11 @@ public class SelectDriver extends HttpServlet {
       }
 
       String ua = request.getHeader("User-Agent");
-      if ((login_cookie != null) && (TokenChecker.checkToken(ua,login_cookie.getValue()))) {
+      String ipAddress = request.getHeader("X-FORWARDED-FOR");
+      if(ipAddress == null){
+        ipAddress = request.getRemoteAddr();
+      }
+      if ((login_cookie != null) && (TokenChecker.checkToken(ua,login_cookie.getValue(),ipAddress))) {
         int id = Integer.parseInt(request.getParameter("id"));
         Cookie cook = new Cookie("usrnmdrv", request.getParameter("driverUsername"));
         response.addCookie(cook);

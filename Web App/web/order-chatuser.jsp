@@ -39,6 +39,7 @@
     JSONObject profile_json = null;
     if (login_cookie == null) {
         response.sendRedirect("login.jsp");
+        return;
     }else{
         String profile_string = profile
                 .getProfile(login_cookie.getValue(), Integer.parseInt(request.getParameter("id")));
