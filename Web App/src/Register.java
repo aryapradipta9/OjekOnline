@@ -44,7 +44,11 @@ public class Register extends HttpServlet {
                     "http://localhost:" + env.getIdentityPort() + "/register");
             String userAgent = request.getHeader("User-Agent");
             String browser = TokenChecker.parseUA(userAgent);
-            String string_token = registerRequest.postRequest("username=" + username + "&password=" + password + "&email=" + email +"&ua=" +browser);
+            String ipAddress = request.getHeader("X-FORWARDED-FOR");
+            if(ipAddress == null){
+                ipAddress = request.getRemoteAddr();
+            }
+            String string_token = registerRequest.postRequest("username=" + username + "&password=" + password + "&email=" + email + "&ua=" + browser + "&ip=" + ipAddress);
             JSONObject json_token = new JSONObject(string_token);
 
             if (json_token.getBoolean("status")) {

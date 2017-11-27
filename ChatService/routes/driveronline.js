@@ -38,16 +38,9 @@ router.post('/:user', function(req, res) {
             var mapping = driveronline.map;
             var cont = mapping.splice(mapping.findIndex(e => e.driver === req.params.user),1);
             
-<<<<<<< HEAD
-            
-            res.cookie('usrnmdrv',cont[0].cust);
-            console.log(cont[0].cust);
-            res.send(JSON.stringify({ "usrnmdrv" : cont[0].cust})); 
-=======
             console.log("test : " + cont[0].cust);
             res.cookie('usrnmdrv','cont[0].cust',{domain:'localhost:8080'});
             res.send(cont[0].cust); 
->>>>>>> df9c39a3d9eb66670c77bacbd3639d4c0f3d2234
             //theCallback(); // the function to run once all flags are true
             clearInterval(_flagCheck);
         }

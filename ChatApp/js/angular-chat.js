@@ -49,7 +49,7 @@ angular.module('chatApp', [])
 })
 .controller('chatCtrl', ['$scope', function($scope) {
     $scope.messages = [];
-    $scope.username = getCookie("user");
+    $scope.username = getCookie("usrnmdrv");
     var usrnm = getCookie("username");
     var usrnmdrv = getCookie("usrnmdrv");
     $scope.send = function() {

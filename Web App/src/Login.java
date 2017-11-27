@@ -25,7 +25,11 @@ public class Login extends HttpServlet {
       HttpRequest login = new HttpRequest("http://localhost:"+env.getIdentityPort()+"/login");
       String userAgent = request.getHeader("User-Agent");
       String browser = TokenChecker.parseUA(userAgent);
-      String res = login.postRequest("username="+request.getParameter("username")+"&password="+request.getParameter("password")+"&ua="+browser);
+      String ipAddress = request.getHeader("X-FORWARDED-FOR");
+      if(ipAddress == null){
+        ipAddress = request.getRemoteAddr();
+      }
+      String res = login.postRequest("username="+request.getParameter("username")+"&password="+request.getParameter("password")+"&ua="+browser+"&ip="+ipAddress);
       JSONObject json_result = new JSONObject(res);
 
       // Hasil JSON dicek

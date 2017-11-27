@@ -11,16 +11,18 @@ import java.util.Base64;
  */
 public class TokenChecker {
 
-  public static boolean checkToken(String currentUA, String token) {
+  public static boolean checkToken(String currentUA, String token, String ipAddr) {
     // parse UA
     String browser = parseUA(currentUA);
     Base64.Decoder decoder = Base64.getDecoder();
     String json_token = new String(decoder.decode(token));
     JSONObject obj = new JSONObject(json_token);
     String tokenBrowser = obj.getString("browser");
+    String tokenIP = obj.getString("ip");
     boolean temp = tokenBrowser.equals(browser);
+    boolean temp2 = tokenIP.equals(ipAddr);
     System.out.println(temp);
-    if (!temp){
+    if ((!temp)&&(!temp2)){
       return false;
     }
     return true;

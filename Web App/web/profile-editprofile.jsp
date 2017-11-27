@@ -42,6 +42,7 @@ $userdata = getUserbyId($_GET["id"]);-->
         profile_json = new JSONObject(profile_string);
     } else {
         response.sendRedirect("login.jsp");
+        return;
     }
 %>
 

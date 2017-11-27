@@ -54,6 +54,7 @@ require_once("include/User.php");
         profile_json = new JSONObject(profile_string);
     } else {
         response.sendRedirect("login.jsp");
+        return;
     }
 %>
 
