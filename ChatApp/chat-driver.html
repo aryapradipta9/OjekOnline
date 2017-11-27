@@ -20,14 +20,16 @@
 <body>
 
 <div ng-app="chatApp" ng-controller="chatCtrl">
-    <div style="display:flex; justify-content:center;">
-        <h2 style="color:#21CB1E; margin:auto;">Got an Order!</h2>
-        <h3 style="margin:auto;">{{username}}</h3>
-    </div>
+    <!-- <div style="display:flex; justify-content:center;"> -->
+        <h2 style="color:#21CB1E; text-align: center;">Got an Order!</h2>
+        <h3 style="margin:auto; text-align: center;">{{username}}</h3>
+    <!-- </div> -->
     <div class="chat">
-        <div class="chat-display">
-            <div class={{chat.type}} ng-repeat="chat in messages">
-                <p>{{chat.content}}</p>
+       <div scroll-bottom="messages" class="chat-display">
+            <div class="scroll">
+                <div class={{chat.type}} ng-repeat="chat in messages">
+                    <p>{{chat.content}}</p>
+                </div>
             </div>
         </div>
         <form class="chat-content" ng-submit="send()">

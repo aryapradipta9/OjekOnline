@@ -265,6 +265,8 @@ img[class*=profilepic-][class*=user]:not([src*=profpic]) {
 .chat .chat-display {
     float: top;
     overflow: hidden;
+    overflow-y: auto;
+    height: 200px;
 }
 .chat .chat-content {
     border-top: 1px solid #000;
@@ -325,6 +327,8 @@ img[class*=profilepic-][class*=user]:not([src*=profpic]) {
     border-radius: 5px;
     font-size: 20px;
     padding: 7px 15px;
+    margin: auto;
+    display: block;
 }
 .chat-close:hover {
     cursor: pointer;

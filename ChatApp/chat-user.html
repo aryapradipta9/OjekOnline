@@ -31,9 +31,11 @@
 
 <div class="chat" ng-app="chatApp" ng-controller="chatCtrl">
     <md-content>
-        <div class="chat-display">
-            <div class={{chat.type}} ng-repeat="chat in messages">
-                <p>{{chat.content}}</p>
+        <div scroll-bottom="messages" class="chat-display">
+            <div class="scroll">
+                <div class={{chat.type}} ng-repeat="chat in messages">
+                    <p>{{chat.content}}</p>
+                </div>
             </div>
         </div>
         <form class="chat-content" ng-submit="send()">
